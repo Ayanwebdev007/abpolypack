@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: 'Outfit', sans-serif;
+    --font-heading: 'Outfit', sans-serif;
+    --color-brand-orange: #ed4d0d;
+    --color-light-beige: #faf7f2;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background-color: #faf7f2;
+    color: #1c1917;
+    font-weight: 400;
+  }
+
+  h1, h2, h3, h4, h5, h6, .font-heading {
+    font-family: 'Outfit', sans-serif;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #faf7f2;
+}
+::-webkit-scrollbar-thumb {
+  background: #d6ceb9;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ed4d0d;
+}
+
+/* Vertical Text Utilities (Oppenheim Style) */
+.writing-mode-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+}
+
+/* Clean Cards & Panels */
+.beige-card {
+  background-color: #ffffff;
+  border: 1px solid #e7e0d8;
+  box-shadow: 0 4px 20px -2px rgba(28, 25, 23, 0.05);
+}
+
+.beige-card-hover {
+  transition: all 0.25s ease-in-out;
+}
+
+.beige-card-hover:hover {
+  border-color: #ed4d0d;
+  box-shadow: 0 10px 30px -4px rgba(237, 77, 13, 0.12);
+  transform: translateY(-2px);
+}
+
+/* Moving Orange Gradient Animations */
+@keyframes orangeGradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.moving-orange-gradient {
+  background: linear-gradient(125deg, #ad2800, #c43200, #ed4d0d, #d83f04, #ed4d0d, #b52c00);
+  background-size: 250% 250%;
+  animation: orangeGradientMove 6s ease-in-out infinite;
+}
+
+/* Brand Colors */
+.text-brand-orange {
+  color: #ed4d0d;
+}
+
+.bg-brand-orange {
+  background-color: #ed4d0d;
+}
+
+.border-brand-orange {
+  border-color: #ed4d0d;
+}
