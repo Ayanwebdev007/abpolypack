@@ -48,7 +48,7 @@ export default function MarketSegments({ onOpenQuoteModal }) {
   };
 
   return (
-    <section id="industries" className="relative w-full bg-[#faf7f2] text-stone-900 py-16 sm:py-24 lg:py-28 overflow-hidden font-sans border-t border-stone-300">
+    <section id="industries" className="relative w-full bg-[#faf7f2] text-stone-900 pt-16 sm:pt-20 lg:pt-24 pb-6 sm:pb-8 overflow-hidden font-sans border-t border-stone-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
         
         {/* SECTION HEADER (OPPENHEIM STYLE) */}
