@@ -113,8 +113,10 @@ export default function Navbar({ activeSection, setActiveSection, onOpenQuoteMod
       if (subItem && window.setProductFilter) {
         window.setProductFilter(subItem);
       }
-    } else if (sectionId === 'operational-excellence' || sectionId === 'enriching-lives') {
-      targetSection = 'overview';
+    } else if (sectionId === 'operational-excellence') {
+      targetSection = 'operational-excellence';
+    } else if (sectionId === 'industries' || sectionId === 'enriching-lives') {
+      targetSection = 'industries';
     } else if (sectionId === 'media') {
       targetSection = 'products';
     }

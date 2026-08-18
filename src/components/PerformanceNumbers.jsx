@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 
-function AnimatedCounter({ end, duration = 1800, suffix = '', prefix = '' }) {
+function AnimatedCounter({ end, duration = 1800, suffix = '', unit = '', prefix = '' }) {
   const [count, setCount] = useState(0);
   const [hasStarted, setHasStarted] = useState(false);
   const domRef = useRef(null);
@@ -50,12 +50,18 @@ function AnimatedCounter({ end, duration = 1800, suffix = '', prefix = '' }) {
   }, [hasStarted, end, duration]);
 
   if (typeof end !== 'number') {
-    return <span>{prefix}{end}{suffix}</span>;
+    return (
+      <span>
+        {prefix}{end}{suffix}
+        {unit && <span className="text-xl sm:text-2xl lg:text-3xl font-bold ml-1.5 opacity-90">{unit}</span>}
+      </span>
+    );
   }
 
   return (
-    <span ref={domRef}>
+    <span ref={domRef} className="inline-flex items-baseline">
       {prefix}{count.toLocaleString()}{suffix}
+      {unit && <span className="text-xl sm:text-2xl lg:text-3xl font-bold ml-1.5 opacity-90">{unit}</span>}
     </span>
   );
 }
@@ -72,7 +78,8 @@ export default function PerformanceNumbers() {
       id: 'capacity',
       value: 2000,
       suffix: '+',
-      title: 'Mt per month Capacity'
+      unit: 'MT',
+      title: 'Per Month Capacity'
     },
     {
       id: 'network',
@@ -91,14 +98,6 @@ export default function PerformanceNumbers() {
   return (
     <section id="operational-excellence" className="relative w-full moving-orange-gradient text-white py-10 sm:py-12 lg:py-14 overflow-hidden font-sans shadow-2xl">
       
-      {/* SUBTLE BRAND WATERMARK LOGO */}
-      <div className="absolute right-10 top-1/2 -translate-y-1/2 opacity-5 pointer-events-none w-[450px] select-none">
-        <img 
-          src="/logo.png" 
-          alt="Watermark" 
-          className="w-full h-auto object-contain filter brightness-0 invert" 
-        />
-      </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
         
@@ -119,19 +118,19 @@ export default function PerformanceNumbers() {
               className="relative flex flex-col items-center justify-center text-center p-4 sm:p-5 lg:p-6 rounded-2xl transition-all duration-300 group hover:-translate-y-1 hover:scale-[1.05] cursor-pointer"
             >
               {/* Animated Stat Number */}
-              <div className="relative text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-none mb-2.5 drop-shadow-md group-hover:scale-110 transition-transform duration-300">
+              <div className="relative text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-none mb-3 drop-shadow-md group-hover:scale-105 transition-transform duration-300 flex items-baseline justify-center whitespace-nowrap">
                 {stat.isText ? (
                   <span>{stat.displayValue}</span>
                 ) : (
-                  <AnimatedCounter end={stat.value} suffix={stat.suffix} />
+                  <AnimatedCounter end={stat.value} suffix={stat.suffix} unit={stat.unit} />
                 )}
               </div>
 
               {/* Minimal Accent Divider */}
-              <div className="w-6 h-[2px] bg-white/40 group-hover:w-12 group-hover:bg-white transition-all duration-300 rounded-full mb-2" />
+              <div className="w-8 h-[2px] bg-white/40 group-hover:w-14 group-hover:bg-white transition-all duration-300 rounded-full mb-2.5" />
 
               {/* Title */}
-              <h3 className="relative text-xs sm:text-sm lg:text-[15px] font-normal text-white/95 tracking-wide uppercase group-hover:text-white transition-colors duration-200">
+              <h3 className="relative text-sm sm:text-base font-medium text-white/90 tracking-wider uppercase group-hover:text-white transition-colors duration-200">
                 {stat.title}
               </h3>
             </div>

@@ -4,6 +4,7 @@ import HeroSlider from './components/HeroSlider';
 import CompanyOverview from './components/CompanyOverview';
 import FeaturedProducts from './components/FeaturedProducts';
 import PerformanceNumbers from './components/PerformanceNumbers';
+import MarketSegments from './components/MarketSegments';
 import QuoteModal from './components/QuoteModal';
 
 export default function App() {
@@ -56,6 +57,11 @@ export default function App() {
 
         {/* 4. Numbers Behind Our Performance Section */}
         <PerformanceNumbers />
+
+        {/* 5. Industries & Market Segments Served Section */}
+        <MarketSegments
+          onOpenQuoteModal={handleOpenQuoteModal}
+        />
 
       </main>
 
