@@ -93,7 +93,7 @@ export default function HeroSlider() {
   ];
 
   return (
-    <section id="hero" className="relative w-full h-[calc(100vh-68px)] min-h-[550px] max-h-[960px] bg-black overflow-hidden flex flex-col justify-between font-sans">
+    <section id="hero" className="relative w-full h-screen min-h-[600px] max-h-[1080px] bg-black overflow-hidden flex flex-col justify-between font-sans">
       
       {/* Full-Bleed Video Media Layers */}
       <div className="absolute inset-0 z-0">

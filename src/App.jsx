@@ -3,6 +3,9 @@ import Navbar from './components/Navbar';
 import HeroSlider from './components/HeroSlider';
 import CompanyOverview from './components/CompanyOverview';
 import FeaturedProducts from './components/FeaturedProducts';
+import PerformanceNumbers from './components/PerformanceNumbers';
+import MarketSegments from './components/MarketSegments';
+import BrandPartners from './components/BrandPartners';
 import QuoteModal from './components/QuoteModal';
 
 export default function App() {
@@ -40,9 +43,6 @@ export default function App() {
           }}
         />
 
-        {/* Thicker White Gap Divider (Top Divider Only) */}
-        <div className="w-full h-6 sm:h-10 lg:h-12 bg-white relative z-30 shadow-md" />
-
         {/* 2. Company Overview Section */}
         <CompanyOverview
           onNavigate={(sec) => {
@@ -55,6 +55,17 @@ export default function App() {
         <FeaturedProducts
           onOpenQuoteModal={handleOpenQuoteModal}
         />
+
+        {/* 4. Numbers Behind Our Performance Section */}
+        <PerformanceNumbers />
+
+        {/* 5. Industries & Market Segments Served Section */}
+        <MarketSegments
+          onOpenQuoteModal={handleOpenQuoteModal}
+        />
+
+        {/* 6. Our Brands Horizontal Loop Section */}
+        <BrandPartners />
 
       </main>
 

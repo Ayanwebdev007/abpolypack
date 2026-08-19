@@ -8,17 +8,20 @@ import {
 } from 'lucide-react';
 
 export default function Navbar({ activeSection, setActiveSection, onOpenQuoteModal }) {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setScrollY(window.scrollY);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const scrollProgress = Math.min(1, Math.max(0, scrollY / 100));
+  const isScrolled = scrollProgress > 0.4;
 
   // Navigation data with descriptions and featured imagery matching Pidilite dropdown style
   const navLinks = [
@@ -43,18 +46,21 @@ export default function Navbar({ activeSection, setActiveSection, onOpenQuoteMod
       label: 'Products', 
       hasDropdown: true,
       heading: 'Flexible Packaging Solutions',
-      description: 'From blown-film extrusion and high-barrier laminates to 9-color rotogravure printing and custom spouted pouches under one roof in Howrah.',
+      description: 'High-barrier laminates, custom pouches, shrink sleeves, wrap-around labels, and collation shrink films engineered for global brands.',
       ctaText: 'Explore Products',
       featuredImage: '/logo.png',
       items: [
-        'Food Packaging',
-        'Beverages',
-        'Liquid Packaging',
-        'Spices',
-        'Personal Care & Household',
-        'Health Care & Agriculture',
+        'Laminates',
+        'Pouches',
+        'Shrink Sleeves',
+        'Wrap-around Labels',
         'Collation Shrink Films'
       ]
+    },
+    { 
+      id: 'provenance', 
+      label: 'Provenance', 
+      hasDropdown: false 
     },
     { 
       id: 'operational-excellence', 
@@ -86,6 +92,7 @@ export default function Navbar({ activeSection, setActiveSection, onOpenQuoteMod
       ]
     },
     { id: 'media', label: 'Media', hasDropdown: false },
+    { id: 'career', label: 'Career', hasDropdown: false },
     { id: 'get-in-touch', label: 'Get in Touch', hasDropdown: false, isCta: true }
   ];
 
@@ -93,19 +100,25 @@ export default function Navbar({ activeSection, setActiveSection, onOpenQuoteMod
     setActiveDropdown(null);
     setMobileMenuOpen(false);
 
-    if (sectionId === 'get-in-touch' || subItem === 'Get in Touch') {
+    if (sectionId === 'get-in-touch' || subItem === 'Get in Touch' || sectionId === 'career') {
       if (onOpenQuoteModal) onOpenQuoteModal();
       return;
     }
 
     let targetSection = 'hero';
-    if (sectionId === 'our-story' || subItem === 'Company Overview' || subItem === 'Vision & Mission' || subItem === 'Core Values' || subItem === 'Leadership' || subItem === 'Our Journey') {
+    if (sectionId === 'our-story' || sectionId === 'provenance' || subItem === 'Company Overview' || subItem === 'Vision & Mission' || subItem === 'Core Values' || subItem === 'Leadership' || subItem === 'Our Journey') {
       targetSection = 'overview';
     } else if (sectionId === 'products' || subItem) {
       targetSection = 'products';
       if (subItem && window.setProductFilter) {
         window.setProductFilter(subItem);
       }
+    } else if (sectionId === 'operational-excellence') {
+      targetSection = 'operational-excellence';
+    } else if (sectionId === 'industries' || sectionId === 'enriching-lives') {
+      targetSection = 'industries';
+    } else if (sectionId === 'media') {
+      targetSection = 'products';
     }
 
     setActiveSection(targetSection);
@@ -119,12 +132,23 @@ export default function Navbar({ activeSection, setActiveSection, onOpenQuoteMod
 
   return (
     <header 
-      className="sticky top-0 left-0 right-0 z-50 transition-all duration-300 font-sans"
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 font-sans"
       onMouseLeave={() => setActiveDropdown(null)}
     >
+      {/* 1. White Solid + Glass Layer that gradually fades in on scroll */}
+      <div 
+        className="absolute inset-0 bg-white/95 backdrop-blur-md border-b border-stone-200 shadow-md transition-opacity duration-150 pointer-events-none"
+        style={{ opacity: scrollProgress }}
+      />
+      {/* 2. Top Dark Gradient Layer that gradually fades out on scroll */}
+      <div 
+        className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-transparent pointer-events-none transition-opacity duration-150"
+        style={{ opacity: 1 - scrollProgress }}
+      />
+
       <nav 
-        className={`transition-all duration-300 px-4 sm:px-8 lg:px-12 bg-white border-b border-stone-200 ${
-          isScrolled ? 'shadow-md py-2.5' : 'py-3 sm:py-3.5'
+        className={`relative z-10 transition-all duration-300 px-4 sm:px-6 lg:px-8 xl:px-12 ${
+          isScrolled ? 'py-2.5 sm:py-3' : 'py-3 sm:py-3.5 lg:py-4'
         }`}
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -132,17 +156,19 @@ export default function Navbar({ activeSection, setActiveSection, onOpenQuoteMod
           {/* LEFT SIDE: LOGO ONLY */}
           <div 
             onClick={() => handleNavClick('hero')}
-            className="cursor-pointer group flex items-center shrink-0 mr-8"
+            className="cursor-pointer group flex items-center shrink-0 mr-4 xl:mr-8"
           >
             <img 
               src="/logo.png" 
               alt="AB POLYPACKS" 
-              className="h-9 sm:h-11 w-auto object-contain" 
+              className={`h-8 sm:h-10 xl:h-11 w-auto object-contain transition-all duration-300 ${
+                isScrolled ? '' : 'drop-shadow-md brightness-105'
+              }`} 
             />
           </div>
 
           {/* CENTER: Inline Nav Links (Outfit Font, Normal & Medium Weight) */}
-          <div className="hidden md:flex items-center space-x-2 lg:space-x-5 whitespace-nowrap">
+          <div className="hidden lg:flex items-center space-x-1 xl:space-x-2.5 2xl:space-x-4 whitespace-nowrap">
             {navLinks.map((link) => (
               <div 
                 key={link.id} 
@@ -152,26 +178,34 @@ export default function Navbar({ activeSection, setActiveSection, onOpenQuoteMod
                 {link.hasDropdown ? (
                   <button
                     onClick={() => handleNavClick(link.id)}
-                    className={`px-3 py-2 text-[15px] lg:text-base font-medium transition-colors flex items-center space-x-1.5 ${
+                    className={`px-2 xl:px-2.5 py-2 text-[13.5px] xl:text-[14.5px] font-medium transition-colors duration-300 flex items-center space-x-1 ${
                       activeDropdown === link.id
                         ? 'text-[#ed4d0d]'
-                        : 'text-stone-700 hover:text-[#ed4d0d]'
+                        : isScrolled
+                          ? 'text-stone-700 hover:text-[#ed4d0d]'
+                          : 'text-white hover:text-[#ed4d0d] drop-shadow-sm'
                     }`}
                   >
                     <span>{link.label}</span>
                     {activeDropdown === link.id ? (
-                      <ChevronUp className="w-4 h-4 text-[#ed4d0d]" />
+                      <ChevronUp className="w-3.5 h-3.5 xl:w-4 xl:h-4 text-[#ed4d0d]" />
                     ) : (
-                      <ChevronDown className="w-4 h-4 text-stone-500" />
+                      <ChevronDown className={`w-3.5 h-3.5 xl:w-4 xl:h-4 transition-colors duration-300 ${
+                        isScrolled ? 'text-stone-500' : 'text-white/80'
+                      }`} />
                     )}
                   </button>
                 ) : (
                   <button
                     onClick={() => handleNavClick(link.id)}
-                    className={`px-3 py-2 text-[15px] lg:text-base font-medium transition-all ${
+                    className={`transition-all duration-300 ${
                       link.isCta
-                        ? 'bg-[#ed4d0d] hover:bg-[#d4410a] text-white rounded-lg px-6 py-2.5 font-medium shadow-sm ml-3'
-                        : 'text-stone-700 hover:text-[#ed4d0d]'
+                        ? 'bg-[#ed4d0d] hover:bg-[#d4410a] text-white rounded-lg px-4 xl:px-5 py-2 text-[13.5px] xl:text-[14.5px] font-medium shadow-md hover:shadow-lg ml-1 xl:ml-2'
+                        : `px-2 xl:px-2.5 py-2 text-[13.5px] xl:text-[14.5px] font-medium ${
+                            isScrolled
+                              ? 'text-stone-700 hover:text-[#ed4d0d]'
+                              : 'text-white hover:text-[#ed4d0d] drop-shadow-sm'
+                          }`
                     }`}
                   >
                     {link.label}
@@ -184,7 +218,11 @@ export default function Navbar({ activeSection, setActiveSection, onOpenQuoteMod
           {/* Mobile Hamburger */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2.5 rounded-lg bg-stone-100 border border-stone-300 text-stone-800 ml-auto"
+            className={`lg:hidden p-2.5 rounded-lg border transition-all duration-300 ml-auto ${
+              isScrolled
+                ? 'bg-stone-100 border-stone-300 text-stone-800 hover:bg-stone-200'
+                : 'bg-black/40 backdrop-blur-md border-white/20 text-white hover:bg-black/60'
+            }`}
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -194,11 +232,11 @@ export default function Navbar({ activeSection, setActiveSection, onOpenQuoteMod
         {/* PIDILITE EXACT MEGA-DROPDOWN MODAL CARD */}
         {activeDropdown && activeLinkObj && (
           <div 
-            className="hidden md:flex justify-center absolute top-full left-0 right-0 pt-4 px-6 lg:px-12 z-50 animate-fadeIn"
+            className="hidden lg:flex justify-center absolute top-full left-0 right-0 pt-2 px-6 lg:px-12 z-50 animate-fadeIn"
             onMouseEnter={() => setActiveDropdown(activeDropdown)}
             onMouseLeave={() => setActiveDropdown(null)}
           >
-            <div className="w-full max-w-5xl bg-white border border-stone-200 rounded-3xl p-10 lg:p-12 shadow-2xl grid grid-cols-12 gap-8 items-center">
+            <div className="w-full max-w-5xl bg-white/95 backdrop-blur-xl border border-stone-200 rounded-3xl p-10 lg:p-12 shadow-2xl grid grid-cols-12 gap-8 items-center text-stone-900">
               
               {/* Left Column: Heading, Description & Button (col-span-4) */}
               <div className="col-span-4 space-y-4 pr-6 pl-4 border-r border-stone-100">
@@ -255,24 +293,38 @@ export default function Navbar({ activeSection, setActiveSection, onOpenQuoteMod
 
         {/* Mobile Drawer */}
         {mobileMenuOpen && (
-          <div className="md:hidden mt-3 p-4 bg-white border border-stone-200 rounded-2xl shadow-xl space-y-2">
+          <div className={`lg:hidden mt-3 p-4 border rounded-2xl shadow-2xl space-y-2 transition-all ${
+            isScrolled
+              ? 'bg-white border-stone-200 text-stone-900'
+              : 'bg-black/90 backdrop-blur-xl border-white/15 text-white'
+          }`}>
             {navLinks.map((link) => (
               <div key={link.id} className="space-y-1">
                 <button
                   onClick={() => handleNavClick(link.id)}
                   className={`w-full text-left px-4 py-2.5 rounded-lg text-xs font-medium uppercase tracking-wider ${
-                    link.isCta ? 'bg-[#ed4d0d] text-white' : 'text-stone-800 hover:bg-[#faf7f2]'
+                    link.isCta 
+                      ? 'bg-[#ed4d0d] text-white' 
+                      : isScrolled 
+                        ? 'text-stone-800 hover:bg-stone-50' 
+                        : 'text-white hover:bg-white/10 hover:text-[#ed4d0d]'
                   }`}
                 >
                   {link.label}
                 </button>
                 {link.hasDropdown && (
-                  <div className="pl-4 space-y-1 border-l border-stone-200 ml-3 my-1">
+                  <div className={`pl-4 space-y-1 border-l ml-3 my-1 ${
+                    isScrolled ? 'border-stone-200' : 'border-white/20'
+                  }`}>
                     {link.items.map((sub, idx) => (
                       <button
                         key={idx}
                         onClick={() => handleNavClick(link.id, sub)}
-                        className="w-full text-left px-3 py-1.5 text-xs text-stone-600 hover:text-[#ed4d0d] block font-normal"
+                        className={`w-full text-left px-3 py-1.5 text-xs block font-normal ${
+                          isScrolled
+                            ? 'text-stone-600 hover:text-[#ed4d0d]'
+                            : 'text-white/70 hover:text-[#ed4d0d]'
+                        }`}
                       >
                         • {sub}
                       </button>
