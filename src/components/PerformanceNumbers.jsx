@@ -88,10 +88,10 @@ export default function PerformanceNumbers() {
       title: 'Supply Network'
     },
     {
-      id: 'manpower',
+      id: 'professionals',
       value: 375,
-      suffix: '',
-      title: 'Manpower'
+      suffix: '+',
+      title: 'Professionals'
     }
   ];
 

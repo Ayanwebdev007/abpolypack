@@ -6,6 +6,7 @@ import FeaturedProducts from './components/FeaturedProducts';
 import PerformanceNumbers from './components/PerformanceNumbers';
 import MarketSegments from './components/MarketSegments';
 import BrandPartners from './components/BrandPartners';
+import RegenerativeCycle from './components/RegenerativeCycle';
 import QuoteModal from './components/QuoteModal';
 
 export default function App() {
@@ -66,6 +67,11 @@ export default function App() {
 
         {/* 6. Our Brands Horizontal Loop Section */}
         <BrandPartners />
+
+        {/* 7. Regenerative Sustainability Cycle Rolling Wheel Section */}
+        <RegenerativeCycle
+          onOpenQuoteModal={handleOpenQuoteModal}
+        />
 
       </main>
 

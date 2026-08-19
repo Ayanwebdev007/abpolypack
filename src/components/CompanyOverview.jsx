@@ -32,16 +32,16 @@ export default function CompanyOverview({ onOpenQuoteModal, onNavigate }) {
             {/* Headline with Thin Stone & Heavy Brand Orange Weights */}
             <h2 className="text-3xl sm:text-5xl lg:text-6xl tracking-tight uppercase leading-[1.1] flex flex-wrap items-center gap-x-3.5 gap-y-1 max-w-4xl">
               <span className="font-extralight text-stone-900">FROM THE FACTORY FLOOR</span>
-              <span className="font-black text-[#ed4d0d]">TO THE FINAL HAND.</span>
+              <span className="font-black text-[#ed4d0d]">TO THE FINAL HAND</span>
             </h2>
 
             {/* Top Right Single Action Button (Top-aligned with FROM THE FACTORY FLOOR) */}
             <div className="shrink-0 pt-1">
               <button
-                onClick={() => onOpenQuoteModal && onOpenQuoteModal('Our Story')}
+                onClick={() => onOpenQuoteModal && onOpenQuoteModal('Brochure')}
                 className="inline-flex items-center px-7 py-3.5 rounded-lg bg-[#ed4d0d] hover:bg-[#d4410a] text-white text-xs sm:text-sm font-semibold tracking-widest uppercase transition-all duration-200 shadow-md hover:shadow-lg space-x-3 group whitespace-nowrap"
               >
-                <span>EXPLORE OUR STORY</span>
+                <span>VIEW BROCHURE</span>
                 <Plus className="w-4 h-4 group-hover:rotate-90 transition-transform duration-200" />
               </button>
             </div>
@@ -92,11 +92,20 @@ export default function CompanyOverview({ onOpenQuoteModal, onNavigate }) {
 
           </div>
 
-          {/* Tagline / Closing Statement */}
-          <div className="pt-3 border-t border-stone-200">
-            <p className="text-lg sm:text-xl font-bold text-stone-950 tracking-tight">
-              AB Polypacks — <span className="text-[#ed4d0d]">Built for the Journey.</span>
+          {/* Tagline / Closing Statement & Action */}
+          <div className="pt-4 border-t border-stone-200 space-y-4">
+            <p className="text-lg sm:text-xl font-bold text-stone-950 tracking-tight whitespace-nowrap">
+              AB Polypacks — <span className="text-[#ed4d0d]">Built for the Journey</span>
             </p>
+            <div>
+              <button
+                onClick={() => onOpenQuoteModal && onOpenQuoteModal('View Us')}
+                className="inline-flex items-center px-5 py-2.5 rounded-lg bg-[#ed4d0d] hover:bg-[#d4410a] text-white text-xs font-semibold tracking-wider uppercase transition-all duration-200 shadow-sm hover:shadow space-x-2 group whitespace-nowrap"
+              >
+                <span>VIEW US</span>
+                <Plus className="w-3.5 h-3.5 group-hover:rotate-90 transition-transform duration-200" />
+              </button>
+            </div>
           </div>
 
         </div>

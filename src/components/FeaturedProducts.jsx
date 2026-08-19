@@ -70,8 +70,8 @@ export default function FeaturedProducts({ onOpenQuoteModal }) {
             <div className="space-y-3 max-w-4xl">
               {/* Headline with Thin Stone & Heavy Brand Orange Weights */}
               <h2 className="text-3xl sm:text-5xl lg:text-6xl tracking-tight uppercase leading-[1.1] flex flex-wrap items-center gap-x-3.5 gap-y-1">
-                <span className="font-extralight text-stone-900">ONE PORTFOLIO.</span>
-                <span className="font-black text-[#ed4d0d]">EVERY PACKAGING POSSIBILITY.</span>
+                <span className="font-extralight text-stone-900">ONE PORTFOLIO</span>
+                <span className="font-black text-[#ed4d0d]">EVERY PACKAGING POSSIBILITY</span>
               </h2>
 
               {/* Description Copy */}

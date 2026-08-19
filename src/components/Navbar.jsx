@@ -179,16 +179,14 @@ export default function Navbar({ activeSection, setActiveSection, onOpenQuoteMod
                   <button
                     onClick={() => handleNavClick(link.id)}
                     className={`px-2 xl:px-2.5 py-2 text-[13.5px] xl:text-[14.5px] font-medium transition-colors duration-300 flex items-center space-x-1 ${
-                      activeDropdown === link.id
-                        ? 'text-[#ed4d0d]'
-                        : isScrolled
-                          ? 'text-stone-700 hover:text-[#ed4d0d]'
-                          : 'text-white hover:text-[#ed4d0d] drop-shadow-sm'
+                      isScrolled
+                        ? 'text-stone-700'
+                        : 'text-white drop-shadow-sm'
                     }`}
                   >
                     <span>{link.label}</span>
                     {activeDropdown === link.id ? (
-                      <ChevronUp className="w-3.5 h-3.5 xl:w-4 xl:h-4 text-[#ed4d0d]" />
+                      <ChevronUp className={`w-3.5 h-3.5 xl:w-4 xl:h-4 ${isScrolled ? 'text-stone-500' : 'text-white/80'}`} />
                     ) : (
                       <ChevronDown className={`w-3.5 h-3.5 xl:w-4 xl:h-4 transition-colors duration-300 ${
                         isScrolled ? 'text-stone-500' : 'text-white/80'
@@ -203,8 +201,8 @@ export default function Navbar({ activeSection, setActiveSection, onOpenQuoteMod
                         ? 'bg-[#ed4d0d] hover:bg-[#d4410a] text-white rounded-lg px-4 xl:px-5 py-2 text-[13.5px] xl:text-[14.5px] font-medium shadow-md hover:shadow-lg ml-1 xl:ml-2'
                         : `px-2 xl:px-2.5 py-2 text-[13.5px] xl:text-[14.5px] font-medium ${
                             isScrolled
-                              ? 'text-stone-700 hover:text-[#ed4d0d]'
-                              : 'text-white hover:text-[#ed4d0d] drop-shadow-sm'
+                              ? 'text-stone-700'
+                              : 'text-white drop-shadow-sm'
                           }`
                     }`}
                   >

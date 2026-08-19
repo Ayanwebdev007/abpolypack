@@ -48,8 +48,28 @@ export default function BrandPartners() {
   const marqueeItems = [...brands, ...brands, ...brands];
 
   return (
-    <section id="our-brands" className="relative w-full bg-[#faf7f2] text-stone-900 pt-2 pb-12 sm:pb-16 overflow-hidden font-sans border-b border-stone-200">
+    <section id="our-brands" className="relative w-full bg-[#faf7f2] text-stone-900 pt-8 sm:pt-10 pb-12 sm:pb-16 overflow-hidden font-sans border-b border-stone-200">
       
+      {/* SECTION HEADER (OPPENHEIM STYLE) */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 mb-8 sm:mb-10">
+        <div className="flex items-end">
+          <div className="relative inline-flex items-end">
+            {/* Thin horizontal line extending to the left */}
+            <div className="absolute right-full bottom-0 w-[100vw] h-[1.5px] bg-stone-300 pointer-events-none" />
+            
+            {/* First Part: TRUSTED BY THE WORLD'S */}
+            <span className="inline-block text-xs sm:text-sm lg:text-base font-bold uppercase tracking-[0.25em] text-stone-800 pb-2 border-b-[1.5px] border-stone-300 leading-tight whitespace-nowrap select-none pr-2">
+              TRUSTED BY THE WORLD'S
+            </span>
+
+            {/* Second Word: BEST COMPANIES */}
+            <span className="inline-block text-xs sm:text-sm lg:text-base font-bold uppercase tracking-[0.25em] text-stone-800 pb-2 border-b-[3px] sm:border-b-[3.5px] border-[#ed4d0d] leading-tight whitespace-nowrap select-none pl-1.5">
+              BEST COMPANIE<span className="tracking-normal [letter-spacing:0]">S</span>
+            </span>
+          </div>
+        </div>
+      </div>
+
       {/* INFINITE HORIZONTAL MARQUEE CONTAINER WITH MATCHING BEIGE EDGE GRADIENT FADES */}
       <div className="relative w-full overflow-hidden">
         
