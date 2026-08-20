@@ -7,6 +7,10 @@ import PerformanceNumbers from './components/PerformanceNumbers';
 import MarketSegments from './components/MarketSegments';
 import BrandPartners from './components/BrandPartners';
 import RegenerativeCycle from './components/RegenerativeCycle';
+import OperationalExcellence from './components/OperationalExcellence';
+import BeforeAfterComparison from './components/BeforeAfterComparison';
+import GlobalReach from './components/GlobalReach';
+import OurLocation from './components/OurLocation';
 import QuoteModal from './components/QuoteModal';
 
 export default function App() {
@@ -72,6 +76,22 @@ export default function App() {
         <RegenerativeCycle
           onOpenQuoteModal={handleOpenQuoteModal}
         />
+
+        {/* 8. Operational Excellence Section */}
+        <OperationalExcellence
+          onOpenQuoteModal={handleOpenQuoteModal}
+        />
+
+        {/* 9. Before & After Transformation Slider Section */}
+        <BeforeAfterComparison />
+
+        {/* 10. Global Reach & Export World Map Section */}
+        <GlobalReach
+          onOpenQuoteModal={handleOpenQuoteModal}
+        />
+
+        {/* 11. Our Location Map Section */}
+        <OurLocation />
 
       </main>
 

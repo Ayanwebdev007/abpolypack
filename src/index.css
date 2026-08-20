@@ -5,6 +5,7 @@
     --font-sans: 'Outfit', sans-serif;
     --font-heading: 'Outfit', sans-serif;
     --color-brand-orange: #ed4d0d;
+    --color-brand-blue: #018ade;
     --color-light-beige: #faf7f2;
   }
   
@@ -93,6 +94,18 @@
 
 .border-brand-orange {
   border-color: #ed4d0d;
+}
+
+.text-brand-blue {
+  color: #018ade;
+}
+
+.bg-brand-blue {
+  background-color: #018ade;
+}
+
+.border-brand-blue {
+  border-color: #018ade;
 }
 
 /* Horizontal Infinite Marquee Loop */

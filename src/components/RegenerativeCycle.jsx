@@ -82,14 +82,12 @@ export default function RegenerativeCycle({ onOpenQuoteModal }) {
   // Handle clicking a specific step with shortest angular path
   const goToStep = (targetIndex) => {
     setHasInteracted(true);
-    setActiveStep((currentActive) => {
-      let diff = targetIndex - currentActive;
-      while (diff > totalSteps / 2) diff -= totalSteps;
-      while (diff < -totalSteps / 2) diff += totalSteps;
-      
-      setRotationAngle((prevAngle) => prevAngle - diff * anglePerStep);
-      return targetIndex;
-    });
+    let diff = targetIndex - activeStep;
+    while (diff > totalSteps / 2) diff -= totalSteps;
+    while (diff < -totalSteps / 2) diff += totalSteps;
+    
+    setRotationAngle((prevAngle) => prevAngle - diff * anglePerStep);
+    setActiveStep(targetIndex);
   };
 
   const handleStepClick = (index) => {
@@ -201,14 +199,14 @@ export default function RegenerativeCycle({ onOpenQuoteModal }) {
               {/* Layer 1: Outer Soft Drop Shadow Base Ring */}
               <div className="absolute inset-0 rounded-full bg-white shadow-[0_20px_60px_rgba(0,0,0,0.06),0_2px_12px_rgba(0,0,0,0.03)] border border-stone-200/80 pointer-events-none" />
               
-              {/* Layer 2: Slim Colored Orbital Track Band */}
-              <div className="absolute inset-[32px] sm:inset-[42px] lg:inset-[46px] rounded-full bg-gradient-to-br from-[#ed4d0d]/15 via-[#ed4d0d]/10 to-[#ed4d0d]/20 border border-[#ed4d0d]/30 pointer-events-none" />
+              {/* Layer 2: Slim Colored Orbital Track Band (Solid Brand Blue) */}
+              <div className="absolute inset-[32px] sm:inset-[42px] lg:inset-[46px] rounded-full bg-[#018ade] border border-[#018ade] pointer-events-none" />
 
               {/* Layer 3: Dashed Orbital Center Guide Line */}
-              <div className="absolute inset-[44px] sm:inset-[58px] lg:inset-[65px] rounded-full border border-dashed border-[#ed4d0d]/40 pointer-events-none" />
+              <div className="absolute inset-[44px] sm:inset-[58px] lg:inset-[65px] rounded-full border border-dashed border-white/40 pointer-events-none" />
 
               {/* Layer 4: Center Crisp White Disc for Text */}
-              <div className="absolute inset-[56px] sm:inset-[74px] lg:inset-[84px] rounded-full bg-white border border-[#ed4d0d]/30 shadow-sm pointer-events-none" />
+              <div className="absolute inset-[56px] sm:inset-[74px] lg:inset-[84px] rounded-full bg-white border border-stone-200 shadow-sm pointer-events-none" />
 
               {/* ---------------------------------------------------- */}
               {/* THE ROTATING ORBITAL WHEEL */}
