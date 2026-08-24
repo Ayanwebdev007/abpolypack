@@ -1,7 +1,7 @@
 import React from 'react';
 import { Plus } from 'lucide-react';
 
-export default function CompanyOverview({ onOpenQuoteModal, onNavigate }) {
+export default function CompanyOverview({ onOpenQuoteModal, onNavigate, onNavigatePage }) {
   return (
     <section id="overview" className="relative w-full bg-white text-stone-900 py-16 sm:py-24 lg:py-28 overflow-hidden font-sans border-b border-stone-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
@@ -99,10 +99,10 @@ export default function CompanyOverview({ onOpenQuoteModal, onNavigate }) {
             </p>
             <div>
               <button
-                onClick={() => onOpenQuoteModal && onOpenQuoteModal('View Us')}
+                onClick={() => onNavigatePage && onNavigatePage('company-overview')}
                 className="inline-flex items-center px-5 py-2.5 rounded-lg bg-[#ed4d0d] hover:bg-[#d4410a] text-white text-xs font-semibold tracking-wider uppercase transition-all duration-200 shadow-sm hover:shadow space-x-2 group whitespace-nowrap"
               >
-                <span>VIEW US</span>
+                <span>KNOW US</span>
                 <Plus className="w-3.5 h-3.5 group-hover:rotate-90 transition-transform duration-200" />
               </button>
             </div>

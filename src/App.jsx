@@ -11,9 +11,13 @@ import OperationalExcellence from './components/OperationalExcellence';
 import BeforeAfterComparison from './components/BeforeAfterComparison';
 import GlobalReach from './components/GlobalReach';
 import OurLocation from './components/OurLocation';
+import EmployeeStories from './components/EmployeeStories';
+import CompanyOverviewPage from './components/CompanyOverviewPage';
+import Footer from './components/Footer';
 import QuoteModal from './components/QuoteModal';
 
 export default function App() {
+  const [currentPage, setCurrentPage] = useState('home');
   const [activeSection, setActiveSection] = useState('hero');
   const [quoteModalOpen, setQuoteModalOpen] = useState(false);
   const [selectedQuoteProduct, setSelectedQuoteProduct] = useState(null);
@@ -34,66 +38,102 @@ export default function App() {
       <Navbar
         activeSection={activeSection}
         setActiveSection={setActiveSection}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
         onOpenQuoteModal={handleOpenQuoteModal}
       />
 
       {/* Main Content Sections */}
-      <main className="flex-1">
-        {/* 1. Hero Slider Section */}
-        <HeroSlider
-          onOpenQuoteModal={handleOpenQuoteModal}
-          onNavigate={(sec) => {
+      {currentPage === 'home' ? (
+        <main className="flex-1">
+          {/* 1. Hero Slider Section */}
+          <HeroSlider
+            onOpenQuoteModal={handleOpenQuoteModal}
+            onNavigate={(sec) => {
+              setActiveSection(sec);
+              document.getElementById(sec)?.scrollIntoView({ behavior: 'smooth' });
+            }}
+          />
+
+          {/* 2. Company Overview Section */}
+          <CompanyOverview
+            onNavigate={(sec) => {
+              setActiveSection(sec);
+              document.getElementById(sec)?.scrollIntoView({ behavior: 'smooth' });
+            }}
+            onNavigatePage={(page) => {
+              setCurrentPage(page);
+              window.scrollTo({ top: 0, behavior: 'instant' });
+            }}
+          />
+
+          {/* 3. Featured Products Bento Grid Section */}
+          <FeaturedProducts
+            onOpenQuoteModal={handleOpenQuoteModal}
+          />
+
+          {/* 4. Numbers Behind Our Performance Section */}
+          <PerformanceNumbers />
+
+          {/* 5. Industries & Market Segments Served Section */}
+          <MarketSegments
+            onOpenQuoteModal={handleOpenQuoteModal}
+          />
+
+          {/* 6. Our Brands Horizontal Loop Section */}
+          <BrandPartners />
+
+          {/* 7. Regenerative Sustainability Cycle Rolling Wheel Section */}
+          <RegenerativeCycle
+            onOpenQuoteModal={handleOpenQuoteModal}
+          />
+
+          {/* 8. Operational Excellence Section */}
+          <OperationalExcellence
+            onOpenQuoteModal={handleOpenQuoteModal}
+          />
+
+          {/* 9. Before & After Transformation Slider Section */}
+          <BeforeAfterComparison />
+
+          {/* 10. Global Reach & Export World Map Section */}
+          <GlobalReach
+            onOpenQuoteModal={handleOpenQuoteModal}
+          />
+
+          {/* 10.5. Employee Stories / Testimonials Section */}
+          <EmployeeStories />
+
+          {/* 11. Our Location Map Section */}
+          <OurLocation />
+
+        </main>
+      ) : currentPage === 'company-overview' ? (
+        <main className="flex-1">
+          <CompanyOverviewPage 
+            onOpenQuoteModal={handleOpenQuoteModal}
+          />
+        </main>
+      ) : null}
+
+      {/* Footer Section */}
+      <Footer
+        onOpenQuoteModal={handleOpenQuoteModal}
+        onNavigate={(sec) => {
+          if (currentPage !== 'home') {
+            setCurrentPage('home');
+            setTimeout(() => {
+              setActiveSection(sec);
+              const el = document.getElementById(sec);
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+          } else {
             setActiveSection(sec);
-            document.getElementById(sec)?.scrollIntoView({ behavior: 'smooth' });
-          }}
-        />
-
-        {/* 2. Company Overview Section */}
-        <CompanyOverview
-          onNavigate={(sec) => {
-            setActiveSection(sec);
-            document.getElementById(sec)?.scrollIntoView({ behavior: 'smooth' });
-          }}
-        />
-
-        {/* 3. Featured Products Bento Grid Section */}
-        <FeaturedProducts
-          onOpenQuoteModal={handleOpenQuoteModal}
-        />
-
-        {/* 4. Numbers Behind Our Performance Section */}
-        <PerformanceNumbers />
-
-        {/* 5. Industries & Market Segments Served Section */}
-        <MarketSegments
-          onOpenQuoteModal={handleOpenQuoteModal}
-        />
-
-        {/* 6. Our Brands Horizontal Loop Section */}
-        <BrandPartners />
-
-        {/* 7. Regenerative Sustainability Cycle Rolling Wheel Section */}
-        <RegenerativeCycle
-          onOpenQuoteModal={handleOpenQuoteModal}
-        />
-
-        {/* 8. Operational Excellence Section */}
-        <OperationalExcellence
-          onOpenQuoteModal={handleOpenQuoteModal}
-        />
-
-        {/* 9. Before & After Transformation Slider Section */}
-        <BeforeAfterComparison />
-
-        {/* 10. Global Reach & Export World Map Section */}
-        <GlobalReach
-          onOpenQuoteModal={handleOpenQuoteModal}
-        />
-
-        {/* 11. Our Location Map Section */}
-        <OurLocation />
-
-      </main>
+            const el = document.getElementById(sec);
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+          }
+        }}
+      />
 
 
 

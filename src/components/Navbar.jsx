@@ -7,7 +7,7 @@ import {
   ArrowRight
 } from 'lucide-react';
 
-export default function Navbar({ activeSection, setActiveSection, onOpenQuoteModal }) {
+export default function Navbar({ activeSection, setActiveSection, currentPage, setCurrentPage, onOpenQuoteModal }) {
   const [scrollY, setScrollY] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -105,8 +105,51 @@ export default function Navbar({ activeSection, setActiveSection, onOpenQuoteMod
       return;
     }
 
+    // Route to Company Overview Page
+    if (subItem === 'Company Overview') {
+      if (setCurrentPage) {
+        setCurrentPage('company-overview');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      return;
+    }
+
+    // Cross-page navigation: if on sub-page, navigate home first, then scroll
+    if (currentPage && currentPage !== 'home') {
+      let targetSection = 'hero';
+      if (sectionId === 'our-story' || sectionId === 'provenance' || subItem === 'Vision & Mission' || subItem === 'Core Values' || subItem === 'Leadership' || subItem === 'Our Journey') {
+        targetSection = 'overview';
+      } else if (sectionId === 'products' || subItem) {
+        targetSection = 'products';
+      } else if (sectionId === 'operational-excellence') {
+        targetSection = 'operational-excellence';
+      } else if (sectionId === 'industries' || sectionId === 'enriching-lives') {
+        targetSection = 'industries';
+      } else if (sectionId === 'media') {
+        targetSection = 'products';
+      }
+
+      if (setCurrentPage) {
+        setCurrentPage('home');
+        setTimeout(() => {
+          setActiveSection(targetSection);
+          if (sectionId === 'products' && subItem && window.setProductFilter) {
+            window.setProductFilter(subItem);
+          }
+          const el = document.getElementById(targetSection);
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth' });
+          } else if (targetSection === 'hero') {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+        }, 120);
+      }
+      return;
+    }
+
+    // Standard homepage scroll navigation
     let targetSection = 'hero';
-    if (sectionId === 'our-story' || sectionId === 'provenance' || subItem === 'Company Overview' || subItem === 'Vision & Mission' || subItem === 'Core Values' || subItem === 'Leadership' || subItem === 'Our Journey') {
+    if (sectionId === 'our-story' || sectionId === 'provenance' || subItem === 'Vision & Mission' || subItem === 'Core Values' || subItem === 'Leadership' || subItem === 'Our Journey') {
       targetSection = 'overview';
     } else if (sectionId === 'products' || subItem) {
       targetSection = 'products';
@@ -122,9 +165,13 @@ export default function Navbar({ activeSection, setActiveSection, onOpenQuoteMod
     }
 
     setActiveSection(targetSection);
-    const el = document.getElementById(targetSection);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+    if (targetSection === 'hero') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      const el = document.getElementById(targetSection);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
@@ -161,7 +208,11 @@ export default function Navbar({ activeSection, setActiveSection, onOpenQuoteMod
             <img 
               src="/logo.png" 
               alt="AB POLYPACKS" 
-              className={`h-8 sm:h-10 xl:h-11 w-auto object-contain transition-all duration-300 ${
+              className={`w-auto object-contain transition-all duration-300 ${
+                isScrolled 
+                  ? 'h-[38px] sm:h-[44px] xl:h-[48px]' 
+                  : 'h-[46px] sm:h-[54px] xl:h-[60px]'
+              } ${
                 isScrolled ? '' : 'drop-shadow-md brightness-105'
               }`} 
             />

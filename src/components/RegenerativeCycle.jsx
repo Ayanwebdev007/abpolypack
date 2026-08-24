@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   ShieldCheck, 
   Zap, 
@@ -16,6 +16,7 @@ export default function RegenerativeCycle({ onOpenQuoteModal }) {
   const [activeStep, setActiveStep] = useState(0);
   const [rotationAngle, setRotationAngle] = useState(0);
   const [hasInteracted, setHasInteracted] = useState(false);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
   const steps = [
     {
@@ -79,9 +80,26 @@ export default function RegenerativeCycle({ onOpenQuoteModal }) {
   const totalSteps = steps.length;
   const anglePerStep = 360 / totalSteps;
 
+  // Auto-rotation every 2.5 seconds (2500ms)
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+
+    const timer = setInterval(() => {
+      setActiveStep((prev) => {
+        const next = (prev + 1) % totalSteps;
+        setRotationAngle((angle) => angle - anglePerStep);
+        setHasInteracted(true);
+        return next;
+      });
+    }, 2500);
+
+    return () => clearInterval(timer);
+  }, [isAutoPlaying, totalSteps, anglePerStep]);
+
   // Handle clicking a specific step with shortest angular path
   const goToStep = (targetIndex) => {
     setHasInteracted(true);
+    setIsAutoPlaying(false); // Pause auto-rotation on user manual interaction
     let diff = targetIndex - activeStep;
     while (diff > totalSteps / 2) diff -= totalSteps;
     while (diff < -totalSteps / 2) diff += totalSteps;
@@ -96,12 +114,14 @@ export default function RegenerativeCycle({ onOpenQuoteModal }) {
 
   const handleNext = () => {
     setHasInteracted(true);
+    setIsAutoPlaying(false); // Pause auto-rotation on user manual interaction
     setActiveStep((prev) => (prev + 1) % totalSteps);
     setRotationAngle((prev) => prev - anglePerStep);
   };
 
   const handlePrev = () => {
     setHasInteracted(true);
+    setIsAutoPlaying(false); // Pause auto-rotation on user manual interaction
     setActiveStep((prev) => (prev - 1 + totalSteps) % totalSteps);
     setRotationAngle((prev) => prev + anglePerStep);
   };
@@ -212,9 +232,10 @@ export default function RegenerativeCycle({ onOpenQuoteModal }) {
               {/* THE ROTATING ORBITAL WHEEL */}
               {/* ---------------------------------------------------- */}
               <div 
-                className="absolute inset-0 transition-transform duration-700 ease-out"
+                className="absolute inset-0"
                 style={{
-                  transform: `rotate(${rotationAngle}deg)`
+                  transform: `rotate(${rotationAngle}deg)`,
+                  transition: 'transform 1.6s cubic-bezier(0.25, 1, 0.5, 1)'
                 }}
               >
                 {steps.map((step, index) => {
@@ -238,11 +259,11 @@ export default function RegenerativeCycle({ onOpenQuoteModal }) {
                         transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`
                       }}
                     >
-                      {/* Counter-rotate icon container so icon always stays upright */}
                       <div 
-                        className="flex flex-col items-center justify-center transition-transform duration-700 ease-out"
+                        className="flex flex-col items-center justify-center"
                         style={{
-                          transform: `rotate(${-rotationAngle}deg)`
+                          transform: `rotate(${-rotationAngle}deg)`,
+                          transition: 'transform 1.6s cubic-bezier(0.25, 1, 0.5, 1)'
                         }}
                       >
                         {/* Circular Node Icon Button */}

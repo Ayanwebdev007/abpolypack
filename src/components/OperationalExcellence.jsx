@@ -1,6 +1,7 @@
 import React from 'react';
+import { Plus } from 'lucide-react';
 
-export default function OperationalExcellence() {
+export default function OperationalExcellence({ onOpenQuoteModal }) {
   return (
     <section 
       id="operational-excellence" 
@@ -25,11 +26,25 @@ export default function OperationalExcellence() {
             </div>
           </div>
 
-          {/* Headline */}
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-stone-900 tracking-tight uppercase leading-[1.2] max-w-4xl space-y-1">
-            <span className="font-extralight text-stone-900 block">PRECISION IN EVERY PROCESS</span>
-            <span className="font-black text-[#ed4d0d] block">CONSISTENCY IN EVERY OUTCOME</span>
-          </h2>
+          {/* Headline + Button Row (Top Aligned with Headline) */}
+          <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
+            {/* Headline */}
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-stone-900 tracking-tight uppercase leading-[1.2] max-w-4xl space-y-1">
+              <span className="font-extralight text-stone-900 block">PRECISION IN EVERY PROCESS</span>
+              <span className="font-black text-[#ed4d0d] block">CONSISTENCY IN EVERY OUTCOME</span>
+            </h2>
+
+            {/* Top Right Single Action Button (Top-aligned with Headline) */}
+            <div className="shrink-0 pt-1">
+              <button
+                onClick={() => onOpenQuoteModal && onOpenQuoteModal('Operational Excellence')}
+                className="inline-flex items-center px-7 py-3.5 rounded-lg bg-[#ed4d0d] hover:bg-[#d4410a] text-white text-xs sm:text-sm font-semibold tracking-widest uppercase transition-all duration-200 shadow-md hover:shadow-lg space-x-3 group whitespace-nowrap"
+              >
+                <span>KNOW MORE</span>
+                <Plus className="w-4 h-4 group-hover:rotate-90 transition-transform duration-200" />
+              </button>
+            </div>
+          </div>
         </div>
 
         {/* NARRATIVE CONTENT */}

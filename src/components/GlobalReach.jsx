@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 export default function GlobalReach() {
   const exportStats = [
@@ -15,7 +16,7 @@ export default function GlobalReach() {
     {
       year: "2025-26",
       label: "23 Cr ( 12.10% of total turnover )",
-      barHeight: "100%"
+      barHeight: "85%"
     }
   ];
 
@@ -84,9 +85,12 @@ export default function GlobalReach() {
 
                     {/* Vertical Bar Track */}
                     <div className="w-3 sm:w-3.5 lg:w-4 h-64 sm:h-72 lg:h-80 xl:h-[340px] rounded-full bg-white shadow-sm border border-stone-300/90 relative flex flex-col justify-end overflow-hidden">
-                      <div 
-                        className="w-full bg-[#ed4d0d] rounded-full transition-all duration-1000"
-                        style={{ height: stat.barHeight }}
+                      <motion.div 
+                        className="w-full bg-[#ed4d0d] rounded-full"
+                        initial={{ height: 0 }}
+                        whileInView={{ height: stat.barHeight }}
+                        viewport={{ once: false, amount: 0.2 }}
+                        transition={{ duration: 1.2, ease: "easeOut" }}
                       />
                     </div>
 

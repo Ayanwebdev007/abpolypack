@@ -1,7 +1,35 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function BeforeAfterComparison() {
+  const sets = [
+    {
+      id: 0,
+      title: "EXTRUDED SUBSTRATES TO POUCHES",
+      before: "/before_packaging.jpg",
+      after: "/after_packaging.jpg",
+      label: "Substrate vs. Finished Pouch"
+    },
+    {
+      id: 1,
+      title: "PLAIN FOIL TO CUSTOM PRINTED POUCHES",
+      before: "/before_foil_pouch.jpg",
+      after: "/after_foil_pouch.jpg",
+      label: "Plain vs. Printed Pouch"
+    },
+    {
+      id: 2,
+      title: "RAW POLYMER RESIN TO PRECISION FILM ROLLS",
+      before: "/before_resin.jpg",
+      after: "/after_resin.jpg",
+      label: "Resin vs. Finished Film"
+    }
+  ];
+
+  const [currentSet, setCurrentSet] = useState(0);
+  const [direction, setDirection] = useState(0); // 1 = next (right-to-left), -1 = prev (left-to-right)
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
   const containerRef = useRef(null);
@@ -54,6 +82,33 @@ export default function BeforeAfterComparison() {
     };
   }, [isDragging, handleMove]);
 
+  // Autoplay effect to rotate sets
+  useEffect(() => {
+    if (!isAutoPlaying || isDragging) return;
+    const interval = setInterval(() => {
+      setDirection(1);
+      setCurrentSet((prev) => (prev + 1) % sets.length);
+    }, 4500);
+    return () => clearInterval(interval);
+  }, [isAutoPlaying, isDragging, sets.length]);
+
+  const slideVariants = {
+    enter: (dir) => ({
+      x: dir > 0 ? "100%" : dir < 0 ? "-100%" : 0,
+      opacity: 0
+    }),
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1
+    },
+    exit: (dir) => ({
+      zIndex: 0,
+      x: dir < 0 ? "100%" : dir > 0 ? "-100%" : 0,
+      opacity: 0
+    })
+  };
+
   const handleClick = (e) => {
     handleMove(e.clientX);
   };
@@ -100,40 +155,59 @@ export default function BeforeAfterComparison() {
           </div>
 
           {/* RIGHT COLUMN: INTERACTIVE BEFORE / AFTER SLIDER WIDGET */}
-          <div className="flex-1">
+          <div className="flex-1 relative group/slider">
             <div 
               ref={containerRef}
               onClick={handleClick}
               className="relative w-full h-[320px] sm:h-[420px] md:h-[480px] lg:h-[540px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl cursor-ew-resize bg-stone-900"
             >
               
-              {/* Image 2 (AFTER) - Base Layer */}
-              <img 
-                src="/after_packaging.jpg" 
-                alt="After: High-Performance Finished Flexible Packaging Pouch" 
-                className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
-              />
+              {/* Animated Set Wrapper with Bidirectional Slide */}
+              <AnimatePresence initial={false} custom={direction}>
+                <motion.div
+                  key={currentSet}
+                  custom={direction}
+                  variants={slideVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{
+                    x: { type: "spring", stiffness: 300, damping: 30 },
+                    opacity: { duration: 0.25 }
+                  }}
+                  className="absolute inset-0 w-full h-full pointer-events-none"
+                >
+                  {/* Image 2 (AFTER) - Base Layer */}
+                  <img 
+                    src={sets[currentSet].after} 
+                    alt={`After: ${sets[currentSet].title}`} 
+                    className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
+                  />
 
-              {/* Image 1 (BEFORE) - Clipped Top Layer */}
-              <div 
-                className="absolute inset-0 overflow-hidden pointer-events-none"
-                style={{
-                  clipPath: `polygon(0 0, ${sliderPosition}% 0, ${sliderPosition}% 100%, 0 100%)`
-                }}
-              >
-                <img 
-                  src="/before_packaging.jpg" 
-                  alt="Before: Raw Extruded Film Rolls Substrate" 
-                  className="absolute inset-0 w-full h-full object-cover object-center"
-                />
-              </div>
+                  {/* Image 1 (BEFORE) - Clipped Top Layer */}
+                  <div 
+                    className="absolute inset-0 overflow-hidden pointer-events-none"
+                    style={{
+                      clipPath: `polygon(0 0, ${sliderPosition}% 0, ${sliderPosition}% 100%, 0 100%)`
+                    }}
+                  >
+                    <img 
+                      src={sets[currentSet].before} 
+                      alt={`Before: ${sets[currentSet].title}`} 
+                      className="absolute inset-0 w-full h-full object-cover object-center"
+                    />
+                  </div>
+                </motion.div>
+              </AnimatePresence>
 
-              {/* "BEFORE" Badge (Top-Left) - High z-index so line passes behind */}
+              {/* "BEFORE" Badge (Top-Left) */}
               <div className="absolute top-4 left-4 z-40 px-3.5 py-1.5 rounded-lg bg-white/95 text-stone-900 text-xs font-extrabold uppercase tracking-widest shadow-md backdrop-blur-sm pointer-events-none">
                 BEFORE
               </div>
 
-              {/* "AFTER" Badge (Top-Right) - High z-index so line passes behind */}
+
+
+              {/* "AFTER" Badge (Top-Right) */}
               <div className="absolute top-4 right-4 z-40 px-3.5 py-1.5 rounded-lg bg-[#ed4d0d] text-white text-xs font-extrabold uppercase tracking-widest shadow-md pointer-events-none">
                 AFTER
               </div>
@@ -163,6 +237,58 @@ export default function BeforeAfterComparison() {
                 </div>
               </div>
 
+            </div>
+
+            {/* Bottom Nav Row (Arrows + Dots) */}
+            <div className="mt-5 flex items-center justify-center space-x-5">
+              {/* Prev Button */}
+              <button 
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsAutoPlaying(false);
+                  setDirection(-1);
+                  setCurrentSet((prev) => (prev - 1 + sets.length) % sets.length);
+                }}
+                className="p-2.5 rounded-lg bg-white border border-stone-200 hover:border-[#ed4d0d] text-stone-700 hover:text-[#ed4d0d] shadow-sm transition-all duration-200 active:scale-95 cursor-pointer"
+                aria-label="Previous image set"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+
+              {/* Dots indicators */}
+              <div className="flex items-center space-x-2">
+                {sets.map((set, idx) => (
+                  <button
+                    key={set.id}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setIsAutoPlaying(false);
+                      setDirection(idx > currentSet ? 1 : -1);
+                      setCurrentSet(idx);
+                    }}
+                    className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                      currentSet === idx 
+                        ? 'w-7 bg-[#ed4d0d]' 
+                        : 'w-2 bg-stone-300 hover:bg-stone-400'
+                    }`}
+                    aria-label={`Go to slide ${idx + 1}`}
+                  />
+                ))}
+              </div>
+
+              {/* Next Button */}
+              <button 
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsAutoPlaying(false);
+                  setDirection(1);
+                  setCurrentSet((prev) => (prev + 1) % sets.length);
+                }}
+                className="p-2.5 rounded-lg bg-white border border-stone-200 hover:border-[#ed4d0d] text-stone-700 hover:text-[#ed4d0d] shadow-sm transition-all duration-200 active:scale-95 cursor-pointer"
+                aria-label="Next image set"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
             </div>
           </div>
 

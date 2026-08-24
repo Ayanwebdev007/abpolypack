@@ -140,16 +140,7 @@ export default function MarketSegments({ onOpenQuoteModal }) {
               </p>
             </div>
 
-            {/* Top Right Single Action Button */}
-            <div className="shrink-0 pt-1">
-              <button
-                onClick={() => onOpenQuoteModal && onOpenQuoteModal('Market Segments')}
-                className="inline-flex items-center px-7 py-3.5 rounded-lg bg-[#ed4d0d] hover:bg-[#d4410a] text-white text-xs sm:text-sm font-semibold tracking-widest uppercase transition-all duration-200 shadow-md hover:shadow-lg space-x-3 group whitespace-nowrap"
-              >
-                <span>EXPLORE SEGMENTS</span>
-                <Plus className="w-4 h-4 group-hover:rotate-90 transition-transform duration-200" />
-              </button>
-            </div>
+
           </div>
 
         </div>
