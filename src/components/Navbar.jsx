@@ -105,11 +105,35 @@ export default function Navbar({ activeSection, setActiveSection, currentPage, s
       return;
     }
 
-    // Route to Company Overview Page
-    if (subItem === 'Company Overview') {
+    // Route to Company Overview Page & Specific Sub-Sections
+    if (subItem === 'Company Overview' || subItem === 'Vision & Mission' || subItem === 'Core Values' || subItem === 'Our Journey' || sectionId === 'our-story') {
+      const sectionMap = {
+        'Vision & Mission': 'vision-mission',
+        'Core Values': 'core-values',
+        'Our Journey': 'our-journey',
+        'Company Overview': 'overview'
+      };
+      const targetId = sectionMap[subItem] || 'hero';
+
       if (setCurrentPage) {
-        setCurrentPage('company-overview');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        if (currentPage !== 'company-overview') {
+          setCurrentPage('company-overview');
+          setTimeout(() => {
+            if (targetId === 'hero') {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+              const el = document.getElementById(targetId);
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }
+          }, 120);
+        } else {
+          if (targetId === 'hero') {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          } else {
+            const el = document.getElementById(targetId);
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
       }
       return;
     }

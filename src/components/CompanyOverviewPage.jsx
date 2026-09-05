@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   Globe, 
   Instagram, 
@@ -8,10 +8,18 @@ import {
   Mail,
   CheckCircle2,
   Sparkles,
-  ArrowRight
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+  Calendar,
+  Award,
+  TrendingUp,
+  Factory,
+  ShieldCheck,
+  Plus
 } from 'lucide-react';
 
-export default function CompanyOverviewPage() {
+export default function CompanyOverviewPage({ onOpenQuoteModal }) {
   const [activeValue, setActiveValue] = useState(0);
   // Initial angle 126deg puts the first active petal (DELIVER) at 90deg (pointing right towards detail card)
   const [rotationAngle, setRotationAngle] = useState(126);
@@ -130,6 +138,102 @@ export default function CompanyOverviewPage() {
       id: 'think',
       question: 'WHAT IF IT COULD THINK AHEAD?',
       description: 'Anticipate changing markets, evolving technology and a more responsible future.'
+    }
+  ];
+
+  const timelineScrollRef = useRef(null);
+  const [isTimelineAutoPlaying, setIsTimelineAutoPlaying] = useState(true);
+
+  // Auto-slide effect to the end, then loops back smoothly
+  useEffect(() => {
+    if (!isTimelineAutoPlaying) return;
+
+    const timer = setInterval(() => {
+      if (timelineScrollRef.current) {
+        const { scrollLeft, scrollWidth, clientWidth } = timelineScrollRef.current;
+        const cardStep = 360;
+
+        // If reached or near the end, loop smoothly back to start
+        if (scrollLeft + clientWidth >= scrollWidth - 25) {
+          timelineScrollRef.current.scrollTo({
+            left: 0,
+            behavior: 'smooth'
+          });
+        } else {
+          timelineScrollRef.current.scrollBy({
+            left: cardStep,
+            behavior: 'smooth'
+          });
+        }
+      }
+    }, 3200);
+
+    return () => clearInterval(timer);
+  }, [isTimelineAutoPlaying]);
+
+  const scrollTimeline = (direction) => {
+    if (timelineScrollRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = timelineScrollRef.current;
+      const cardStep = 360;
+
+      if (direction === 'next') {
+        if (scrollLeft + clientWidth >= scrollWidth - 25) {
+          timelineScrollRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          timelineScrollRef.current.scrollBy({ left: cardStep, behavior: 'smooth' });
+        }
+      } else {
+        if (scrollLeft <= 25) {
+          timelineScrollRef.current.scrollTo({ left: scrollWidth, behavior: 'smooth' });
+        } else {
+          timelineScrollRef.current.scrollBy({ left: -cardStep, behavior: 'smooth' });
+        }
+      }
+    }
+  };
+
+  const milestones = [
+    {
+      id: '2006',
+      year: '2006',
+      title: 'The Journey Begins',
+      description: 'Established in Howrah with specialized blown-film extrusion lines engineered for high-barrier packaging.',
+      image: '/overview_hero.jpg'
+    },
+    {
+      id: '2011',
+      year: '2011',
+      title: 'Rotogravure & Lamination Scale',
+      description: 'Integrated high-speed multi-colour rotogravure printing presses and precision solventless lamination machinery.',
+      image: '/gallery/gallery_2.jpg'
+    },
+    {
+      id: '2016',
+      year: '2016',
+      title: '1.5 Lakh Sq. Ft. Facility',
+      description: 'Consolidated full conversion operations under one flagship 1.5 Lakh Sq. Ft. integrated campus in Howrah.',
+      image: '/corporate_facility_bg.png'
+    },
+    {
+      id: '2019',
+      year: '2019',
+      title: 'Global Certifications',
+      description: 'Achieved international food safety benchmarks including BRCGS Packaging, FSSC 22000, and ISO 9001:2015.',
+      image: '/gallery/gallery_3.jpg'
+    },
+    {
+      id: '2022',
+      year: '2022',
+      title: 'Recyclable Packaging',
+      description: 'Developed recyclable mono-material barrier structures (PE/PE and PP/PP) and automated pouch-making lines.',
+      image: '/gallery/gallery_4.jpg'
+    },
+    {
+      id: '2024',
+      year: '2024 - 2026',
+      title: '24,000 MT & Global Exports',
+      description: 'Scaled annual production to 24,000 MT, exporting flexible packaging across Africa, the Middle East, and Europe.',
+      image: '/gallery/gallery_7.jpg'
     }
   ];
 
@@ -649,6 +753,138 @@ export default function CompanyOverviewPage() {
             </div>
 
           </div>
+        </div>
+      </section>
+
+      {/* 6. SECTION: OUR JOURNEY & MILESTONES (CLEAN HORIZONTAL SCROLL) */}
+      <section 
+        id="our-journey" 
+        className="relative w-full bg-[#faf7f2] text-stone-900 py-16 sm:py-20 lg:py-24 font-sans border-b border-stone-200 [overflow-x:clip]"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
+          
+          {/* SECTION HEADER (OPPENHEIM STYLE) */}
+          <div className="space-y-4 mb-8 sm:mb-12">
+            
+            {/* Eyebrow Subtitle with Oppenheim Horizontal Line */}
+            <div className="flex items-end mb-3">
+              <div className="relative inline-flex items-end">
+                <div className="absolute right-full bottom-0 w-[100vw] h-[1.5px] bg-stone-300 pointer-events-none" />
+                <span className="inline-block text-xs sm:text-sm lg:text-base font-bold uppercase tracking-[0.25em] text-stone-800 pb-1.5 border-b-[1.5px] border-stone-300 leading-tight whitespace-nowrap select-none pr-2">
+                  OUR
+                </span>
+                <span className="inline-block text-xs sm:text-sm lg:text-base font-bold uppercase tracking-[0.25em] text-stone-800 pb-1.5 border-b-[3px] sm:border-b-[3.5px] border-[#ed4d0d] leading-tight whitespace-nowrap select-none pl-1">
+                  JOURNE<span className="tracking-normal [letter-spacing:0]">Y</span>
+                </span>
+              </div>
+            </div>
+
+            {/* Headline + Scroll Buttons Row */}
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+              <div className="space-y-2 max-w-4xl">
+                <h2 className="text-3xl sm:text-5xl lg:text-6xl tracking-tight uppercase leading-[1.1] flex flex-wrap items-center gap-x-3.5 gap-y-1">
+                  <span className="font-extralight text-stone-900">FROM INCEPTION TO</span>
+                  <span className="font-black text-[#ed4d0d]">GLOBAL EXCELLENCE</span>
+                </h2>
+                <p className="text-stone-600 text-base sm:text-lg lg:text-xl font-light leading-relaxed pt-1">
+                  Two decades of continuous investment in technology, infrastructure, and customer trust.
+                </p>
+              </div>
+
+              {/* Prev / Next Scroll Buttons (Manual Slide) */}
+              <div className="flex items-center space-x-2 shrink-0">
+                <button
+                  onClick={() => {
+                    setIsTimelineAutoPlaying(false);
+                    scrollTimeline('prev');
+                    setTimeout(() => setIsTimelineAutoPlaying(true), 4000);
+                  }}
+                  aria-label="Scroll left"
+                  className="p-3 rounded-xl bg-white border border-stone-300 hover:border-[#ed4d0d] text-stone-800 hover:text-[#ed4d0d] shadow-none transition-all duration-200 cursor-pointer active:scale-95"
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+                <button
+                  onClick={() => {
+                    setIsTimelineAutoPlaying(false);
+                    scrollTimeline('next');
+                    setTimeout(() => setIsTimelineAutoPlaying(true), 4000);
+                  }}
+                  aria-label="Scroll right"
+                  className="p-3 rounded-xl bg-white border border-stone-300 hover:border-[#ed4d0d] text-stone-800 hover:text-[#ed4d0d] shadow-none transition-all duration-200 cursor-pointer active:scale-95"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          {/* UNIQUE HORIZONTAL MILESTONE TIMELINE TRACK (AUTOSLIDE + MANUAL) */}
+          <div className="relative">
+            
+            {/* Horizontal Timeline Spine Rail */}
+            <div className="absolute top-[7px] left-0 right-0 h-[2px] bg-stone-300 z-0 pointer-events-none" />
+
+            {/* Left-to-Right Scrollable Track - Shadow Free */}
+            <div 
+              ref={timelineScrollRef}
+              onMouseEnter={() => setIsTimelineAutoPlaying(false)}
+              onMouseLeave={() => setIsTimelineAutoPlaying(true)}
+              onTouchStart={() => setIsTimelineAutoPlaying(false)}
+              onTouchEnd={() => {
+                setTimeout(() => setIsTimelineAutoPlaying(true), 3000);
+              }}
+              className="flex items-stretch space-x-6 sm:space-x-8 overflow-x-auto pb-6 pt-0 px-1 sm:px-2 scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden select-none"
+            >
+              {milestones.map((item) => (
+                <div
+                  key={item.id}
+                  className="w-[280px] sm:w-[320px] lg:w-[350px] shrink-0 flex flex-col items-center group cursor-pointer"
+                >
+                  {/* Timeline Milestone Center Node on the Rail (No ring/shadow) */}
+                  <div className="flex items-center justify-center w-full relative z-10 mb-4">
+                    <div className="w-4 h-4 rounded-full bg-[#ed4d0d] border-2 border-[#faf7f2] group-hover:scale-125 transition-transform duration-300" />
+                  </div>
+
+                  {/* Clean Milestone Card: strictly Year, Image, Title, Description - Center Aligned, Completely Shadow-Free */}
+                  <div className="w-full bg-white rounded-3xl border border-stone-200 group-hover:border-[#ed4d0d]/60 shadow-none transition-colors duration-300 overflow-hidden flex flex-col flex-1 p-5 sm:p-6 space-y-4 text-center items-center">
+                    
+                    {/* 1. Year (Center Aligned) */}
+                    <div className="w-full text-center">
+                      <span className="text-3xl sm:text-4xl font-black text-stone-900 group-hover:text-[#ed4d0d] transition-colors tracking-tight font-sans block leading-none">
+                        {item.year}
+                      </span>
+                    </div>
+
+                    {/* 2. Image */}
+                    <div className="relative h-[190px] sm:h-[210px] w-full rounded-2xl overflow-hidden bg-stone-100 shrink-0">
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
+                      />
+                    </div>
+
+                    {/* 3. Title & 4. Description (Center Aligned) */}
+                    <div className="space-y-2 flex-1 flex flex-col justify-start items-center text-center w-full">
+                      <h3 className="text-base sm:text-lg font-bold text-stone-900 tracking-tight leading-snug group-hover:text-[#ed4d0d] transition-colors duration-200">
+                        {item.title}
+                      </h3>
+
+                      <p className="text-stone-600 text-xs sm:text-[13px] leading-relaxed font-normal text-center max-w-xs">
+                        {item.description}
+                      </p>
+                    </div>
+
+                  </div>
+
+                </div>
+              ))}
+            </div>
+
+          </div>
+
         </div>
       </section>
 
