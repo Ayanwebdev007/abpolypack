@@ -5,28 +5,28 @@ import { motion, AnimatePresence } from 'framer-motion';
 export default function EmployeeStories() {
   const testimonials = [
     {
-      name: "Biswadip Basak",
-      designation: "Senior Extrusion Engineer",
-      image: "/employee_biswadip.jpg",
-      quote: "Ensuring the precision of our multi-layer films is a daily challenge. Seeing raw polymer transition into high-integrity rolls that protect foods globally keeps my passion alive."
-    },
-    {
-      name: "Amalin Chakraborty",
-      designation: "Lead Packaging Designer",
-      image: "/employee_amalin.jpg",
-      quote: "We don't just design pouches; we design brand experiences. The raw flexibility of our materials allows us to push creative limits, tailoring solutions that pop on retail shelves."
-    },
-    {
       name: "Priyanka Ghosh",
-      designation: "Quality Assurance Specialist",
+      designation: "Marketing Manager",
       image: "/employee_priyanka.jpg",
-      quote: "Quality is non-negotiable at AB Polypacks. Running continuous testing in our state-of-the-art lab gives us the data to back our integrity. The trust brands place in us is what drives me."
+      quote: "“What makes AB Polypacks feel different is the sense that everyone is part of the journey.” You don’t feel like you are working on something separate from the bigger picture. Whether you are dealing with a customer, developing an idea or solving an everyday challenge, you can see how your work connects with what the organisation is trying to achieve. There is also a strong willingness to collaborate. People bring different strengths to the table, and that often leads to outcomes that are better than what any one person could have created alone. I’ve grown professionally through that experience, but I’ve also learned the value of listening, adapting and trusting the people around you. For me, that’s the real culture at AB Polypacks: We grow as individuals, and we move forward together."
     },
     {
-      name: "Navin Mondal",
-      designation: "Operations & Plant Manager",
+      name: "Ranajit Dey",
+      designation: "Production Planning Head",
+      image: "/employee_biswadip.jpg",
+      quote: "“The most satisfying part of my job is seeing a plan turn into something real.” You start with a requirement, a deadline and a set of constraints. Then the real work begins. You coordinate with different teams, make adjustments, solve bottlenecks and keep everyone aligned. Some days go exactly to plan. Others definitely don't. But that is where teamwork matters. At AB Polypacks, I’ve found that people are willing to communicate openly and take responsibility. That makes it much easier to respond when priorities shift or a challenge comes up unexpectedly. “For me, planning is ultimately about creating confidence — confidence that the right work will happen at the right time, and that the team is ready when it matters.”"
+    },
+    {
+      name: "Nabin Mondal",
+      designation: "Supply Chain Head",
+      image: "/employee_amalin.jpg",
+      quote: "“For us, a customer commitment starts much earlier than production.” It starts with knowing what we need, when we need it and where it needs to come from. My role is to make sure the supply chain is prepared—from sourcing and inventory to coordination with production and timely dispatch. What I value at AB Polypacks is the amount of collaboration involved. Supply chain cannot work in isolation. You have to understand what production needs, what customers expect and where potential challenges might arise. That means staying alert, communicating early and solving issues before they become problems. “The best supply chain is the one that makes everything feel effortless to the customer.”"
+    },
+    {
+      name: "Dr Aroop Mondal",
+      designation: "R&D Manager",
       image: "/employee_navin.jpg",
-      quote: "Operating our 1.5 Lakh Sq. Ft. Howrah facility requires perfect coordination. Every process, from extrusion to final dispatch, is aligned for absolute efficiency and safety."
+      quote: "“A difficult requirement is usually where the interesting work begins.” When a customer asks for something better — more protection, lower material use, improved efficiency or a different performance characteristic — our first response shouldn't be to say, “that's difficult”. It should be: “Let's understand why.” That is how I approach R&D at AB Polypacks. We study the requirement, explore materials and structures, test different approaches and work closely with production and quality teams to make sure the final solution is practical and repeatable. What I value most is seeing technical work create a real business outcome. “When an idea leaves the lab and starts making a difference for a customer, that's when research becomes meaningful.”"
     }
   ];
 
@@ -40,7 +40,7 @@ export default function EmployeeStories() {
     const interval = setInterval(() => {
       setDirection(1);
       setCurrentSlide((prev) => (prev + 1) % testimonials.length);
-    }, 5000);
+    }, 6000);
     return () => clearInterval(interval);
   }, [isAutoPlaying, testimonials.length]);
 
@@ -108,7 +108,7 @@ export default function EmployeeStories() {
         </div>
 
         {/* CAROUSEL SLIDE CONTAINER (FULL BLEED LEFT IMAGE) */}
-        <div className="relative min-h-[580px] sm:min-h-[460px] lg:min-h-[400px] xl:min-h-[440px] w-full overflow-hidden bg-[#faf7f2] border border-stone-200/80 rounded-[2.5rem] shadow-sm">
+        <div className="relative min-h-[580px] sm:min-h-[480px] lg:min-h-[420px] xl:min-h-[440px] w-full overflow-hidden bg-[#faf7f2] border border-stone-200/80 rounded-[2.5rem] shadow-sm">
           <AnimatePresence initial={false} custom={direction}>
             <motion.div
               key={currentSlide}
@@ -124,7 +124,7 @@ export default function EmployeeStories() {
               className="absolute inset-0 w-full h-full flex flex-col lg:flex-row items-stretch"
             >
               {/* Left Side: Full-Bleed Large Employee Photo */}
-              <div className="w-full lg:w-[50%] h-[280px] sm:h-[360px] lg:h-full shrink-0 overflow-hidden relative border-b lg:border-b-0 lg:border-r border-stone-200 bg-stone-100">
+              <div className="w-full lg:w-[50%] h-[260px] sm:h-[320px] lg:h-full shrink-0 overflow-hidden relative border-b lg:border-b-0 lg:border-r border-stone-200 bg-stone-100">
                 <img 
                   src={testimonials[currentSlide].image} 
                   alt={testimonials[currentSlide].name} 
@@ -133,15 +133,15 @@ export default function EmployeeStories() {
               </div>
 
               {/* Right Side: Quote Narrative, Name & Designation */}
-              <div className="w-full lg:w-[50%] p-6 sm:p-10 lg:p-12 xl:p-14 space-y-4 sm:space-y-6 flex flex-col justify-center relative bg-white">
+              <div className="w-full lg:w-[50%] p-6 sm:p-8 lg:p-10 xl:p-12 space-y-4 sm:space-y-5 flex flex-col justify-center relative bg-white">
                 {/* Big Quote Watermark */}
-                <Quote className="w-16 h-16 sm:w-20 sm:h-20 text-[#ed4d0d]/10 absolute top-6 left-4 sm:top-10 sm:left-8 pointer-events-none" />
+                <Quote className="w-16 h-16 sm:w-20 sm:h-20 text-[#ed4d0d]/10 absolute top-6 left-4 sm:top-8 sm:left-8 pointer-events-none" />
                 
-                <p className="text-base sm:text-lg lg:text-xl xl:text-2xl text-stone-900 font-medium leading-relaxed italic relative z-10 pl-2">
+                <p className="text-xs sm:text-sm lg:text-[14.5px] xl:text-[15.5px] text-stone-900 font-medium leading-relaxed italic relative z-10 pl-2">
                   "{testimonials[currentSlide].quote}"
                 </p>
 
-                <div className="space-y-1.5 pt-4 border-t border-stone-200/60 pl-2">
+                <div className="space-y-1.5 pt-3 border-t border-stone-200/60 pl-2">
                   <h4 className="text-lg sm:text-xl lg:text-2xl font-black text-stone-950 uppercase tracking-tight leading-none">
                     {testimonials[currentSlide].name}
                   </h4>
