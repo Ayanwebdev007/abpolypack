@@ -58,8 +58,8 @@ export default function CompanyOverview({ onOpenQuoteModal, onNavigate, onNaviga
           <div className="relative w-full h-[380px] sm:h-[480px] lg:h-[580px] xl:h-[640px] overflow-hidden rounded-none rounded-tr-3xl sm:rounded-tr-[2.5rem] lg:rounded-tr-[3.5rem] bg-stone-100">
             {/* Clean Facility Image */}
             <img 
-              src="/corporate_facility_bg.png" 
-              alt="AB POLYPACKS Manufacturing Facility" 
+              src="/our_story_operator.jpg" 
+              alt="AB POLYPACKS Manufacturing Facility Floor" 
               className="w-full h-full object-cover object-center" 
             />
           </div>

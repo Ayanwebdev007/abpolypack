@@ -1,5 +1,5 @@
 import React from 'react';
-import { Youtube, Twitter, Linkedin, Mail, ArrowUp } from 'lucide-react';
+import { Briefcase, Newspaper, Leaf, Mail, ArrowUp, Instagram, Facebook, Linkedin } from 'lucide-react';
 
 export default function Footer({ onOpenQuoteModal, onNavigate }) {
   const handleScrollToTop = () => {
@@ -31,47 +31,41 @@ export default function Footer({ onOpenQuoteModal, onNavigate }) {
           </p>
         </div>
 
-        {/* Column 2: SOCIAL CELLS */}
+        {/* Column 2: NAVIGATION CELLS */}
         <div className="lg:col-span-3 flex flex-col border-b lg:border-b-0 lg:border-r border-stone-200">
           
-          {/* Youtube Cell */}
-          <a 
-            href="https://youtube.com" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="flex-1 flex items-center gap-4 px-8 py-6 sm:py-8 border-b border-stone-200 hover:bg-[#eae6db]/30 transition-colors group"
+          {/* Career Cell */}
+          <button 
+            onClick={() => onOpenQuoteModal && onOpenQuoteModal('Career')}
+            className="flex-1 flex items-center gap-4 px-8 py-6 sm:py-8 border-b border-stone-200 hover:bg-[#eae6db]/30 transition-colors group cursor-pointer text-left"
           >
-            <Youtube className="w-5 h-5 text-stone-600 group-hover:text-[#ed4d0d] transition-colors shrink-0" />
+            <Briefcase className="w-5 h-5 text-stone-600 group-hover:text-[#ed4d0d] transition-colors shrink-0" />
             <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-stone-800">
-              YOUTUBE
+              CAREER
             </span>
-          </a>
+          </button>
 
-          {/* Twitter Cell */}
-          <a 
-            href="https://twitter.com" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="flex-1 flex items-center gap-4 px-8 py-6 sm:py-8 border-b border-stone-200 hover:bg-[#eae6db]/30 transition-colors group"
+          {/* Media Cell */}
+          <button 
+            onClick={() => onOpenQuoteModal && onOpenQuoteModal('Media')}
+            className="flex-1 flex items-center gap-4 px-8 py-6 sm:py-8 border-b border-stone-200 hover:bg-[#eae6db]/30 transition-colors group cursor-pointer text-left"
           >
-            <Twitter className="w-5 h-5 text-stone-600 group-hover:text-[#ed4d0d] transition-colors shrink-0" />
+            <Newspaper className="w-5 h-5 text-stone-600 group-hover:text-[#ed4d0d] transition-colors shrink-0" />
             <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-stone-800">
-              TWITTER
+              MEDIA
             </span>
-          </a>
+          </button>
 
-          {/* Linkedin Cell */}
-          <a 
-            href="https://linkedin.com" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="flex-1 flex items-center gap-4 px-8 py-6 sm:py-8 hover:bg-[#eae6db]/30 transition-colors group"
+          {/* Sustainability Cell */}
+          <button 
+            onClick={() => handleNavClick('provenance')}
+            className="flex-1 flex items-center gap-4 px-8 py-6 sm:py-8 hover:bg-[#eae6db]/30 transition-colors group cursor-pointer text-left"
           >
-            <Linkedin className="w-5 h-5 text-stone-600 group-hover:text-[#ed4d0d] transition-colors shrink-0" />
+            <Leaf className="w-5 h-5 text-stone-600 group-hover:text-[#ed4d0d] transition-colors shrink-0" />
             <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-stone-800">
-              LINKEDIN
+              SUSTAINABILITY
             </span>
-          </a>
+          </button>
 
         </div>
 
@@ -79,8 +73,8 @@ export default function Footer({ onOpenQuoteModal, onNavigate }) {
         <div className="lg:col-span-5 p-8 sm:p-12 flex items-center justify-between relative overflow-hidden min-h-[160px] lg:min-h-0 bg-[#eae6db]/10">
           
           {/* Giant Text with individual letter hover effect */}
-          <h3 className="text-5xl sm:text-7xl xl:text-8xl 2xl:text-[90px] font-black text-stone-900 tracking-tighter uppercase select-none leading-none">
-            {"REACH US".split("").map((char, idx) => (
+          <h3 className="text-4xl sm:text-5xl xl:text-6xl 2xl:text-7xl font-black text-stone-900 tracking-tighter uppercase select-none leading-none whitespace-nowrap">
+            {"CONTACT US".split("").map((char, idx) => (
               char === " " ? (
                 <span key={idx} className="inline-block w-[0.2em]">&nbsp;</span>
               ) : (
@@ -115,38 +109,31 @@ export default function Footer({ onOpenQuoteModal, onNavigate }) {
           © 2025 – 2026 | All rights reserved by AB Polypacks Pvt Ltd
         </div>
 
-        {/* Links */}
+        {/* Links + Social Icons */}
         <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 order-1 md:order-2">
           <button 
-            onClick={() => handleNavClick('overview')}
             className="text-xs sm:text-sm font-bold text-stone-800 hover:text-[#ed4d0d] transition-colors cursor-pointer"
           >
-            About
+            Terms & Conditions
           </button>
           <button 
-            onClick={() => onOpenQuoteModal && onOpenQuoteModal('Career')}
             className="text-xs sm:text-sm font-bold text-stone-800 hover:text-[#ed4d0d] transition-colors cursor-pointer"
           >
-            Career
+            Privacy Policy
           </button>
-          <button 
-            onClick={() => handleNavClick('provenance')}
-            className="text-xs sm:text-sm font-bold text-stone-800 hover:text-[#ed4d0d] transition-colors cursor-pointer"
-          >
-            Sustainability
-          </button>
-          <button 
-            onClick={() => onOpenQuoteModal && onOpenQuoteModal('Newsletter')}
-            className="text-xs sm:text-sm font-bold text-stone-800 hover:text-[#ed4d0d] transition-colors cursor-pointer"
-          >
-            Newsletter
-          </button>
-          <button 
-            onClick={() => onOpenQuoteModal && onOpenQuoteModal('Contact')}
-            className="text-xs sm:text-sm font-bold text-stone-800 hover:text-[#ed4d0d] transition-colors cursor-pointer"
-          >
-            Contact
-          </button>
+
+          {/* Social Icons */}
+          <div className="flex items-center gap-3 ml-2">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-stone-600 hover:text-[#ed4d0d] transition-colors">
+              <Instagram className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-stone-600 hover:text-[#ed4d0d] transition-colors">
+              <Facebook className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-stone-600 hover:text-[#ed4d0d] transition-colors">
+              <Linkedin className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
+            </a>
+          </div>
         </div>
 
         {/* Scroll up */}

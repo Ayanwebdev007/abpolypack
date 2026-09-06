@@ -89,7 +89,11 @@ export default function BrandPartners() {
               <img
                 src={brand.logo}
                 alt={brand.name}
-                className="max-h-11 sm:max-h-13 w-auto max-w-[130px] sm:max-w-[160px] object-contain group-hover:scale-105 transition-transform duration-300"
+                className={`w-auto object-contain group-hover:scale-105 transition-transform duration-300 ${
+                  brand.id === 'emami'
+                    ? 'max-h-12 sm:max-h-14 max-w-[130px] sm:max-w-[150px]'
+                    : 'max-h-11 sm:max-h-13 max-w-[130px] sm:max-w-[160px]'
+                }`}
               />
             </div>
           ))}

@@ -7,7 +7,7 @@ export default function FeaturedProducts({ onOpenQuoteModal }) {
       id: 'laminates',
       title: 'Laminates',
       subtitle: 'Laminates for protection.',
-      image: '/corporate_facility_bg.png',
+      image: '/product_laminates.png',
       colSpan: 'col-span-12 lg:col-span-7',
       height: 'h-[360px] sm:h-[400px]'
     },
@@ -15,7 +15,7 @@ export default function FeaturedProducts({ onOpenQuoteModal }) {
       id: 'pouches',
       title: 'Pouches',
       subtitle: 'Pouches for versatility.',
-      image: '/product_spout.png',
+      image: '/product_pouches.png',
       colSpan: 'col-span-12 lg:col-span-5',
       height: 'h-[360px] sm:h-[400px]'
     },
@@ -23,7 +23,7 @@ export default function FeaturedProducts({ onOpenQuoteModal }) {
       id: 'shrink-sleeves',
       title: 'Shrink Sleeves',
       subtitle: 'Shrink Sleeves for standout branding.',
-      image: '/product_beverage.png',
+      image: '/product_shrink_sleeves.png',
       colSpan: 'col-span-12',
       height: 'h-[340px] sm:h-[400px] lg:h-[450px]'
     },
@@ -31,7 +31,7 @@ export default function FeaturedProducts({ onOpenQuoteModal }) {
       id: 'wrap-around-labels',
       title: 'Wrap-around Labels',
       subtitle: 'Wrap-around Labels for efficient presentation.',
-      image: '/product_spices.png',
+      image: '/product_wrap_around_labels.png',
       colSpan: 'col-span-12 lg:col-span-5',
       height: 'h-[320px] sm:h-[350px]'
     },
@@ -39,7 +39,7 @@ export default function FeaturedProducts({ onOpenQuoteModal }) {
       id: 'collation-shrink-films',
       title: 'Collation Shrink Films',
       subtitle: 'Collation Shrink Films for secure bundling.',
-      image: '/highlight_supply.png',
+      image: '/product_collation_shrink_film.png',
       colSpan: 'col-span-12 lg:col-span-7',
       height: 'h-[320px] sm:h-[350px]'
     }

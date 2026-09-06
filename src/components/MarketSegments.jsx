@@ -7,21 +7,21 @@ export default function MarketSegments({ onOpenQuoteModal }) {
     tallLeft: {
       id: 'bakery-confectionery',
       title: 'Bakery & Confectionery',
-      image: '/product_bakery.jpg',
+      image: '/industry_bakery_confectionery.png',
       fallbackImage: '/product_food.png',
       requirements: 'Moisture barrier, aroma retention, oxygen control, grease resistance, seal integrity, high-speed machinability'
     },
     middleCol1Top: {
       id: 'snacks-savoury',
       title: 'Snacks & Savoury',
-      image: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281313?q=80&w=800&auto=format&fit=crop',
+      image: '/industry_snacks_savoury.png',
       fallbackImage: '/product_food.png',
       requirements: 'High moisture & oxygen barrier, oil/grease resistance, puncture resistance, seal integrity, aroma retention'
     },
     middleCol1Bottom: {
       id: 'condiments-processed-foods',
       title: 'Condiments & Processed Foods',
-      image: '/product_spout.png',
+      image: '/industry_condiments.png',
       fallbackImage: '/product_food.png',
       requirements: 'Liquid/product compatibility, high seal integrity, barrier protection, puncture resistance, leak prevention'
     },
@@ -35,14 +35,14 @@ export default function MarketSegments({ onOpenQuoteModal }) {
     middleCol2Bottom: {
       id: 'spices-seasonings',
       title: 'Spices & Seasonings',
-      image: '/product_spices.png',
+      image: '/industry_spices.png',
       fallbackImage: '/product_food.png',
       requirements: 'Aroma retention, moisture protection, oxygen barrier, light protection where required, excellent printability'
     },
     tallRight: {
       id: 'tea-coffee',
       title: 'Tea & Coffee',
-      image: 'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?q=80&w=1000&auto=format&fit=crop',
+      image: '/industry_tea_coffee.png',
       fallbackImage: '/product_beverage.png',
       requirements: 'High aroma barrier, oxygen/moisture protection, light protection where required, seal integrity, extended shelf-life support'
     }
@@ -53,35 +53,35 @@ export default function MarketSegments({ onOpenQuoteModal }) {
     leftColTop: {
       id: 'beverages-liquid-foods',
       title: 'Beverages & Liquid Foods',
-      image: '/product_beverage.png',
+      image: '/industry_beverages.png',
       fallbackImage: '/product_spout.png',
       requirements: 'High barrier performance, seal integrity, mechanical durability, product compatibility, transport resilience'
     },
     leftColBottom: {
       id: 'dairy-frozen-foods',
       title: 'Dairy & Frozen Foods',
-      image: 'https://images.unsplash.com/photo-1570197788417-0e82375c9371?q=80&w=800&auto=format&fit=crop',
+      image: '/industry_dairy_frozen.png',
       fallbackImage: '/product_food.png',
       requirements: 'Moisture/vapour barrier, low-temperature performance, seal integrity, puncture resistance, product protection'
     },
     middleTall1: {
       id: 'protein-fresh-foods',
       title: 'Protein & Fresh Foods',
-      image: '/product_food.png',
+      image: '/industry_frozen_protein.png',
       fallbackImage: '/product_spices.png',
       requirements: 'High barrier structures, oxygen control, moisture resistance, puncture resistance, leak prevention, hygiene and food-safety considerations'
     },
     middleTall2: {
       id: 'seeds-agricultural-products',
       title: 'Seeds & Agricultural Products',
-      image: 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?q=80&w=800&auto=format&fit=crop',
+      image: '/industry_seeds.png',
       fallbackImage: '/product_spices.png',
       requirements: 'Moisture control, oxygen management where required, mechanical protection, extended storage performance, printability'
     },
     rightColTop: {
       id: 'personal-care-hygiene',
       title: 'Personal Care & Hygiene',
-      image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?q=80&w=800&auto=format&fit=crop',
+      image: '/industry_household_personal_care.png',
       fallbackImage: '/product_spout.png',
       requirements: 'Moisture resistance, seal integrity, chemical/product compatibility, puncture resistance, dispensing functionality where applicable'
     },
