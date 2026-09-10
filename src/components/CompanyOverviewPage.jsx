@@ -197,44 +197,93 @@ export default function CompanyOverviewPage({ onOpenQuoteModal }) {
     {
       id: '2006',
       year: '2006',
-      title: 'The Journey Begins',
-      description: 'Founded with a clear ambition to redefine possibilities in flexible packaging. From day one, we set out to build something purposeful from Howrah.',
-      image: '/overview_hero.jpg'
+      title: 'Foundational Ambition',
+      description: 'Founded with a clear ambition to redefine possibilities in flexible packaging.',
+      image: '/milestone_teaser_2006.png'
     },
     {
-      id: '2011',
-      year: '2011',
-      title: 'Expanding the Canvas',
-      description: 'Invested in high-speed multi-colour rotogravure printing and precision lamination, turning capability into craft and scale into consistency.',
+      id: '2007-2008',
+      year: '2007–2008',
+      title: 'Manufacturing Footprint',
+      description: 'Expanded our manufacturing footprint, strengthening the foundation for the journey ahead.',
+      image: '/our_story_facility.jpg'
+    },
+    {
+      id: '2009-2010',
+      year: '2009–2010',
+      title: 'Innovation Engine',
+      description: 'Strengthened our innovation engine through focused research, development and technical exploration.',
+      image: '/gallery/gallery_1.jpg'
+    },
+    {
+      id: '2011-2012',
+      year: '2011–2012',
+      title: 'Manufacturing Momentum',
+      description: 'Manufacturing gained momentum as turnover reached ₹10.07 Cr, strengthening the platform for future growth.',
       image: '/gallery/gallery_2.jpg'
     },
     {
-      id: '2016',
-      year: '2016',
-      title: 'One Roof, Full Control',
-      description: 'Consolidated every stage of conversion under a single 1.5 Lakh Sq. Ft. integrated campus — bringing extrusion, printing, lamination and pouching closer together.',
+      id: '2013-2014',
+      year: '2013–2014',
+      title: 'Integrated Production',
+      description: 'Advanced integrated production.',
+      image: '/our_story_operator.jpg'
+    },
+    {
+      id: '2015-2016',
+      year: '2015–2016',
+      title: 'Portfolio Expansion',
+      description: 'Expanded our flexible packaging portfolio and strengthened our position as an end-to-end partner.',
       image: '/corporate_facility_bg.png'
     },
     {
-      id: '2019',
-      year: '2019',
-      title: 'Earning Global Trust',
-      description: 'Achieved BRCGS Packaging, FSSC 22000 and ISO 9001:2015 certifications — a commitment to quality that opened doors across continents.',
+      id: '2017-2018',
+      year: '2017–2018',
+      title: 'Capability & Growth',
+      description: 'Accelerating technological advancement, strengthening process capabilities and customer-focused innovation, with turnover reaching ₹48.45 Cr.',
       image: '/gallery/gallery_3.jpg'
     },
     {
-      id: '2022',
-      year: '2022',
-      title: 'Building for Tomorrow',
-      description: 'Pioneered recyclable mono-material barrier structures and automated pouch-making lines, proving that responsibility and performance can go hand in hand.',
+      id: '2019-2020',
+      year: '2019–2020',
+      title: 'Operational Excellence',
+      description: 'Strengthened our integrated operations with the addition of new packaging machine lines, while raising the bar on quality, responsiveness and operational excellence.',
       image: '/gallery/gallery_4.jpg'
     },
     {
+      id: '2021-2022',
+      year: '2021–2022',
+      title: 'Global Expansion',
+      description: 'Extending our global reach and advancing our international presence, achieving a turnover of ₹118.36 Cr.',
+      image: '/global_export_map.jpg'
+    },
+    {
+      id: '2023',
+      year: '2023',
+      title: 'Quality Discipline',
+      description: 'Quality became an even deeper discipline.',
+      image: '/gallery/gallery_5.jpg'
+    },
+    {
       id: '2024',
-      year: '2024 — 2026',
-      title: 'The Road Ahead',
-      description: 'The journey continues, with new capabilities, new milestones and greater possibilities ahead — now at 24,000 MT capacity, serving markets across India, Africa, the Middle East and Europe.',
+      year: '2024',
+      title: 'Material Science',
+      description: 'Advancing material science, multilayer structures and technical development for next-generation applications.',
+      image: '/gallery/gallery_6.jpg'
+    },
+    {
+      id: '2025',
+      year: '2025',
+      title: 'Scale & PepsiCo Partnership',
+      description: 'A year of stronger scale and momentum, marked by record production achievements and the addition of PepsiCo to our customer base.',
       image: '/gallery/gallery_7.jpg'
+    },
+    {
+      id: '2026',
+      year: '2026',
+      title: 'The Journey Continues',
+      description: 'The journey continues, with new capabilities, new milestones and greater possibilities ahead.',
+      image: '/milestone_teaser_2026.jpg'
     }
   ];
 
@@ -398,7 +447,6 @@ export default function CompanyOverviewPage({ onOpenQuoteModal }) {
                     Manufacturing Facility
                   </span>
                   <h3 className="text-xl sm:text-2xl font-bold tracking-tight">1.5 Lakh Sq. Ft. Howrah Plant</h3>
-                  <p className="text-stone-300 text-xs sm:text-sm mt-1">Advanced Blown-Film Extrusion Line 3</p>
                 </div>
               </div>
             </div>
@@ -418,7 +466,7 @@ export default function CompanyOverviewPage({ onOpenQuoteModal }) {
           <img 
             src="/vision_mission_bg.jpg" 
             alt="AB Polypacks Manufacturing Campus" 
-            className="w-full h-full object-cover object-center"
+            className="w-full h-full object-cover object-center [transform:scaleX(-1)]"
           />
         </div>
 
@@ -828,28 +876,22 @@ export default function CompanyOverviewPage({ onOpenQuoteModal }) {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-0 rounded-3xl overflow-hidden border border-stone-200">
               
               {/* LEFT: First Milestone (2006) */}
-              <div className="relative h-[320px] sm:h-[340px] lg:h-[360px] overflow-hidden group">
+              <div className="relative h-[320px] sm:h-[350px] lg:h-[370px] overflow-hidden group">
                 <img 
                   src={milestones[0].image} 
                   alt={milestones[0].title}
-                  className="w-full h-full object-cover object-center"
+                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                 />
                 {/* Gradient overlay for text readability */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                {/* Year watermark */}
-                <div className="absolute top-4 left-5 sm:top-6 sm:left-7">
-                  <span className="text-[80px] sm:text-[100px] lg:text-[110px] font-black text-white/15 leading-none tracking-tighter select-none">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
+                {/* Bottom text: Year at top of description */}
+                <div className="absolute bottom-5 left-5 right-5 sm:bottom-7 sm:left-7 sm:right-7 space-y-1.5">
+                  <span className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight block drop-shadow-sm">
                     {milestones[0].year}
                   </span>
-                </div>
-                {/* Bottom text */}
-                <div className="absolute bottom-5 left-5 right-5 sm:bottom-7 sm:left-7 sm:right-7">
-                  <p className="text-white text-sm sm:text-[15px] font-medium leading-snug">
+                  <p className="text-white/95 text-sm sm:text-[15px] font-medium leading-snug">
                     {milestones[0].description}
                   </p>
-                  <span className="text-white/60 text-xs font-semibold uppercase tracking-wider mt-2 block">
-                    {milestones[0].year}
-                  </span>
                 </div>
               </div>
 
@@ -863,13 +905,13 @@ export default function CompanyOverviewPage({ onOpenQuoteModal }) {
                     backgroundSize: '18px 18px'
                   }}
                 />
-                <div className="relative z-10 flex flex-col items-center space-y-5 text-center">
-                  <p className="text-white/90 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em]">
-                    Company Milestones
-                  </p>
+                <div className="relative z-10 flex flex-col items-center space-y-3 text-center">
                   <h3 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-none">
                     20 Years
                   </h3>
+                  <p className="text-white/90 text-xs sm:text-sm font-semibold uppercase tracking-[0.25em]">
+                    Company Milestones
+                  </p>
 
                   <button
                     onClick={() => {
@@ -884,23 +926,23 @@ export default function CompanyOverviewPage({ onOpenQuoteModal }) {
                 </div>
               </div>
 
-              {/* RIGHT: Last Milestone (2024-2026) */}
-              <div className="relative h-[320px] sm:h-[340px] lg:h-[360px] overflow-hidden group">
+              {/* RIGHT: Last Milestone (2026) */}
+              <div className="relative h-[320px] sm:h-[350px] lg:h-[370px] overflow-hidden group">
                 <img 
                   src={milestones[milestones.length - 1].image} 
                   alt={milestones[milestones.length - 1].title}
-                  className="w-full h-full object-cover object-center"
+                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                 />
                 {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                {/* Bottom text */}
-                <div className="absolute bottom-5 left-5 right-5 sm:bottom-7 sm:left-7 sm:right-7">
-                  <p className="text-white text-sm sm:text-[15px] font-medium leading-snug">
-                    {milestones[milestones.length - 1].description}
-                  </p>
-                  <span className="text-white/60 text-xs font-semibold uppercase tracking-wider mt-2 block">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
+                {/* Bottom text: Year at top of description */}
+                <div className="absolute bottom-5 left-5 right-5 sm:bottom-7 sm:left-7 sm:right-7 space-y-1.5">
+                  <span className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight block drop-shadow-sm">
                     {milestones[milestones.length - 1].year}
                   </span>
+                  <p className="text-white/95 text-sm sm:text-[15px] font-medium leading-snug">
+                    {milestones[milestones.length - 1].description}
+                  </p>
                 </div>
               </div>
 

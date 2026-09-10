@@ -13,11 +13,13 @@ import GlobalReach from './components/GlobalReach';
 import OurLocation from './components/OurLocation';
 import EmployeeStories from './components/EmployeeStories';
 import CompanyOverviewPage from './components/CompanyOverviewPage';
+import ProductPage from './components/ProductPage';
 import Footer from './components/Footer';
 import QuoteModal from './components/QuoteModal';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
+  const [selectedProduct, setSelectedProduct] = useState('laminates');
   const [activeSection, setActiveSection] = useState('hero');
   const [quoteModalOpen, setQuoteModalOpen] = useState(false);
   const [selectedQuoteProduct, setSelectedQuoteProduct] = useState(null);
@@ -40,6 +42,8 @@ export default function App() {
         setActiveSection={setActiveSection}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
+        selectedProduct={selectedProduct}
+        setSelectedProduct={setSelectedProduct}
         onOpenQuoteModal={handleOpenQuoteModal}
       />
 
@@ -70,6 +74,11 @@ export default function App() {
           {/* 3. Featured Products Bento Grid Section */}
           <FeaturedProducts
             onOpenQuoteModal={handleOpenQuoteModal}
+            onSelectProduct={(prodKey) => {
+              setSelectedProduct(prodKey);
+              setCurrentPage('products');
+              window.scrollTo({ top: 0, behavior: 'instant' });
+            }}
           />
 
           {/* 4. Numbers Behind Our Performance Section */}
@@ -111,6 +120,14 @@ export default function App() {
       ) : currentPage === 'company-overview' ? (
         <main className="flex-1">
           <CompanyOverviewPage 
+            onOpenQuoteModal={handleOpenQuoteModal}
+          />
+        </main>
+      ) : currentPage === 'products' ? (
+        <main className="flex-1">
+          <ProductPage
+            selectedProduct={selectedProduct}
+            setSelectedProduct={setSelectedProduct}
             onOpenQuoteModal={handleOpenQuoteModal}
           />
         </main>

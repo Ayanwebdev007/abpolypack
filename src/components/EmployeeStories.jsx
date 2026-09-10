@@ -102,8 +102,8 @@ export default function EmployeeStories() {
 
           {/* Headline */}
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-stone-900 tracking-tight uppercase leading-[1.2] max-w-4xl flex flex-wrap items-center gap-x-2.5">
-            <span className="font-extralight text-stone-900">PEOPLE BEHIND</span>
-            <span className="font-black text-[#ed4d0d]">OUR PACKAGING</span>
+            <span className="font-extralight text-stone-900">VOICES THAT SHAPE</span>
+            <span className="font-black text-[#ed4d0d]">OUR JOURNEY</span>
           </h2>
         </div>
 

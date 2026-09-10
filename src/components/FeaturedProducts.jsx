@@ -1,7 +1,7 @@
 import React from 'react';
 import { Plus } from 'lucide-react';
 
-export default function FeaturedProducts({ onOpenQuoteModal }) {
+export default function FeaturedProducts({ onOpenQuoteModal, onSelectProduct }) {
   const highlights = [
     {
       id: 'laminates',
@@ -83,7 +83,13 @@ export default function FeaturedProducts({ onOpenQuoteModal }) {
             {/* Top Right Single Action Button (Top-aligned with Headline) */}
             <div className="shrink-0 pt-1">
               <button
-                onClick={() => onOpenQuoteModal && onOpenQuoteModal('Products Portfolio')}
+                onClick={() => {
+                  if (onSelectProduct) {
+                    onSelectProduct('laminates');
+                  } else if (onOpenQuoteModal) {
+                    onOpenQuoteModal('Products Portfolio');
+                  }
+                }}
                 className="inline-flex items-center px-7 py-3.5 rounded-lg bg-[#ed4d0d] hover:bg-[#d4410a] text-white text-xs sm:text-sm font-semibold tracking-widest uppercase transition-all duration-200 shadow-md hover:shadow-lg space-x-3 group whitespace-nowrap"
               >
                 <span>EXPLORE PRODUCTS</span>
@@ -99,7 +105,13 @@ export default function FeaturedProducts({ onOpenQuoteModal }) {
           {highlights.map((item) => (
             <div
               key={item.id}
-              onClick={() => onOpenQuoteModal && onOpenQuoteModal(item.title)}
+              onClick={() => {
+                if (onSelectProduct) {
+                  onSelectProduct(item.id);
+                } else if (onOpenQuoteModal) {
+                  onOpenQuoteModal(item.title);
+                }
+              }}
               className={`${item.colSpan} ${item.height} relative rounded-3xl overflow-hidden cursor-pointer border border-stone-200 bg-stone-100 shadow-md group`}
             >
               {/* 1. Base Image */}

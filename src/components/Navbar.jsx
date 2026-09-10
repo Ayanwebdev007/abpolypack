@@ -7,7 +7,7 @@ import {
   ArrowRight
 } from 'lucide-react';
 
-export default function Navbar({ activeSection, setActiveSection, currentPage, setCurrentPage, onOpenQuoteModal }) {
+export default function Navbar({ activeSection, setActiveSection, currentPage, setCurrentPage, selectedProduct, setSelectedProduct, onOpenQuoteModal }) {
   const [scrollY, setScrollY] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -48,7 +48,7 @@ export default function Navbar({ activeSection, setActiveSection, currentPage, s
       heading: 'Flexible Packaging Solutions',
       description: 'High-barrier laminates, custom pouches, shrink sleeves, wrap-around labels, and collation shrink films engineered for global brands.',
       ctaText: 'Explore Products',
-      featuredImage: '/logo.png',
+      featuredImage: '/product_navbar.jpg',
       items: [
         'Laminates',
         'Pouches',
@@ -102,6 +102,23 @@ export default function Navbar({ activeSection, setActiveSection, currentPage, s
 
     if (sectionId === 'get-in-touch' || subItem === 'Get in Touch' || sectionId === 'career') {
       if (onOpenQuoteModal) onOpenQuoteModal();
+      return;
+    }
+
+    // Product Page Navigation (Laminates, Pouches, Shrink Sleeves, etc.)
+    const productKeyMap = {
+      'Laminates': 'laminates',
+      'Pouches': 'pouches',
+      'Shrink Sleeves': 'shrink-sleeves',
+      'Wrap-around Labels': 'wrap-around-labels',
+      'Collation Shrink Films': 'collation-shrink-films'
+    };
+
+    if (sectionId === 'products' || (subItem && productKeyMap[subItem])) {
+      const targetProduct = productKeyMap[subItem] || 'laminates';
+      if (setSelectedProduct) setSelectedProduct(targetProduct);
+      if (setCurrentPage) setCurrentPage('products');
+      window.scrollTo({ top: 0, behavior: 'instant' });
       return;
     }
 
@@ -343,20 +360,30 @@ export default function Navbar({ activeSection, setActiveSection, currentPage, s
 
               {/* Right Column: Featured Image Card (col-span-4) */}
               <div className="col-span-4 pl-4">
-                <div className="w-full h-48 lg:h-52 rounded-2xl bg-gradient-to-br from-[#faf7f2] to-[#f5f0eb] border border-stone-200 p-4 flex flex-col items-center justify-center text-center shadow-inner relative overflow-hidden group">
-                  <div className="w-20 h-20 rounded-xl bg-white border border-stone-200 p-2.5 shadow-md flex items-center justify-center mb-2 group-hover:scale-105 transition-transform">
+                <div className="w-full h-48 lg:h-52 rounded-2xl bg-stone-100 border border-stone-200 shadow-inner relative overflow-hidden group">
+                  {activeLinkObj.featuredImage && activeLinkObj.featuredImage !== '/logo.png' ? (
                     <img 
-                      src="/logo.png" 
-                      alt="AB POLYPACKS" 
-                      className="w-full h-full object-contain" 
+                      src={activeLinkObj.featuredImage} 
+                      alt={activeLinkObj.heading} 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
                     />
-                  </div>
-                  <div className="text-[15px] font-medium text-stone-900">
-                    AB POLYPACKS
-                  </div>
-                  <div className="text-[15px] text-stone-500 font-normal mt-0.5">
-                    Howrah Plant Facility
-                  </div>
+                  ) : (
+                    <div className="w-full h-full p-4 flex flex-col items-center justify-center text-center">
+                      <div className="w-20 h-20 rounded-xl bg-white border border-stone-200 p-2.5 shadow-md flex items-center justify-center mb-2 group-hover:scale-105 transition-transform">
+                        <img 
+                          src="/logo.png" 
+                          alt="AB POLYPACKS" 
+                          className="w-full h-full object-contain" 
+                        />
+                      </div>
+                      <div className="text-[15px] font-medium text-stone-900">
+                        AB POLYPACKS
+                      </div>
+                      <div className="text-[15px] text-stone-500 font-normal mt-0.5">
+                        Howrah Plant Facility
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
 
