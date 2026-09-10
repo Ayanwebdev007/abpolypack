@@ -7,22 +7,22 @@ export default function BeforeAfterComparison() {
     {
       id: 0,
       title: "EXTRUDED SUBSTRATES TO POUCHES",
-      before: "/before_packaging.jpg",
-      after: "/after_packaging.jpg",
+      before: "/before_packaging.webp",
+      after: "/after_packaging.webp",
       label: "Substrate vs. Finished Pouch"
     },
     {
       id: 1,
       title: "PLAIN FOIL TO CUSTOM PRINTED POUCHES",
-      before: "/before_foil_pouch.jpg",
-      after: "/after_foil_pouch.jpg",
+      before: "/before_foil_pouch.webp",
+      after: "/after_foil_pouch.webp",
       label: "Plain vs. Printed Pouch"
     },
     {
       id: 2,
       title: "RAW POLYMER RESIN TO PRECISION FILM ROLLS",
-      before: "/before_resin.jpg",
-      after: "/after_resin.jpg",
+      before: "/before_resin.webp",
+      after: "/after_resin.webp",
       label: "Resin vs. Finished Film"
     }
   ];
@@ -230,7 +230,7 @@ export default function BeforeAfterComparison() {
                   className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white border-[2.5px] border-[#ed4d0d] shadow-[0_4px_25px_rgba(0,0,0,0.3)] flex items-center justify-center cursor-ew-resize pointer-events-auto transition-transform duration-150 active:scale-95 hover:scale-105 p-2 overflow-hidden group"
                 >
                   <img 
-                    src="/logo.png" 
+                    src="/logo.webp" 
                     alt="AB Polypacks Logo" 
                     className="w-full h-full object-contain select-none pointer-events-none group-hover:scale-105 transition-transform duration-200"
                   />

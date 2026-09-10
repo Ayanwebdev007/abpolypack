@@ -32,7 +32,7 @@ export default function Navbar({ activeSection, setActiveSection, currentPage, s
       heading: 'About AB Polypacks',
       description: 'Since 2006, AB Polypacks has been an integrated flexible packaging manufacturer bringing technology and technical expertise to leading global brands.',
       ctaText: 'Know Our Story',
-      featuredImage: '/logo.png',
+      featuredImage: '/logo.webp',
       items: [
         'Company Overview',
         'Vision & Mission',
@@ -48,7 +48,7 @@ export default function Navbar({ activeSection, setActiveSection, currentPage, s
       heading: 'Flexible Packaging Solutions',
       description: 'High-barrier laminates, custom pouches, shrink sleeves, wrap-around labels, and collation shrink films engineered for global brands.',
       ctaText: 'Explore Products',
-      featuredImage: '/product_navbar.jpg',
+      featuredImage: '/product_navbar.webp',
       items: [
         'Laminates',
         'Pouches',
@@ -69,7 +69,7 @@ export default function Navbar({ activeSection, setActiveSection, currentPage, s
       heading: 'Precision Manufacturing',
       description: 'State-of-the-art 1.5 Lakh Sq. Ft. Howrah facility with 24,000 MT annual production capacity and BRC, FSSC 22000, ISO certifications.',
       ctaText: 'Learn More',
-      featuredImage: '/logo.png',
+      featuredImage: '/logo.webp',
       items: [
         'Operational Excellence',
         'Quality Assurance',
@@ -84,7 +84,7 @@ export default function Navbar({ activeSection, setActiveSection, currentPage, s
       heading: 'Sustainability & Community',
       description: 'Committed to eco-conscious flexible films, material efficiency, energy-conscious processes, and community welfare.',
       ctaText: 'Explore Impact',
-      featuredImage: '/logo.png',
+      featuredImage: '/logo.webp',
       items: [
         'Environmental Impact',
         'Commitments',
@@ -247,7 +247,7 @@ export default function Navbar({ activeSection, setActiveSection, currentPage, s
             className="cursor-pointer group flex items-center shrink-0 mr-4 xl:mr-8"
           >
             <img 
-              src="/logo.png" 
+              src="/logo.webp" 
               alt="AB POLYPACKS" 
               className={`w-auto object-contain transition-all duration-300 ${
                 isScrolled 
@@ -361,7 +361,7 @@ export default function Navbar({ activeSection, setActiveSection, currentPage, s
               {/* Right Column: Featured Image Card (col-span-4) */}
               <div className="col-span-4 pl-4">
                 <div className="w-full h-48 lg:h-52 rounded-2xl bg-stone-100 border border-stone-200 shadow-inner relative overflow-hidden group">
-                  {activeLinkObj.featuredImage && activeLinkObj.featuredImage !== '/logo.png' ? (
+                  {activeLinkObj.featuredImage && activeLinkObj.featuredImage !== '/logo.webp' ? (
                     <img 
                       src={activeLinkObj.featuredImage} 
                       alt={activeLinkObj.heading} 
@@ -371,7 +371,7 @@ export default function Navbar({ activeSection, setActiveSection, currentPage, s
                     <div className="w-full h-full p-4 flex flex-col items-center justify-center text-center">
                       <div className="w-20 h-20 rounded-xl bg-white border border-stone-200 p-2.5 shadow-md flex items-center justify-center mb-2 group-hover:scale-105 transition-transform">
                         <img 
-                          src="/logo.png" 
+                          src="/logo.webp" 
                           alt="AB POLYPACKS" 
                           className="w-full h-full object-contain" 
                         />

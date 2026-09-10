@@ -65,21 +65,21 @@ export default function OperationalExcellence({ onOpenQuoteModal }) {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4 lg:gap-5">
             <div className="h-[220px] sm:h-[280px] lg:h-[320px] rounded-2xl sm:rounded-3xl overflow-hidden bg-stone-100 group shadow-sm">
               <img 
-                src="/gallery/gallery_1.jpg" 
+                src="/gallery/gallery_1.webp" 
                 alt="Multi-layer Blown Film Extrusion Plant" 
                 className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
               />
             </div>
             <div className="h-[220px] sm:h-[280px] lg:h-[320px] rounded-2xl sm:rounded-3xl overflow-hidden bg-stone-100 group shadow-sm">
               <img 
-                src="/gallery/gallery_2.jpg" 
+                src="/gallery/gallery_2.webp" 
                 alt="High-Speed Rotogravure Printing Press" 
                 className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
               />
             </div>
             <div className="h-[220px] sm:h-[280px] lg:h-[320px] rounded-2xl sm:rounded-3xl overflow-hidden bg-stone-100 group shadow-sm">
               <img 
-                src="/gallery/gallery_3.jpg" 
+                src="/gallery/gallery_3.webp" 
                 alt="In-house Quality Control Testing Lab" 
                 className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
               />
@@ -90,28 +90,28 @@ export default function OperationalExcellence({ onOpenQuoteModal }) {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 lg:gap-5">
             <div className="h-[160px] sm:h-[200px] lg:h-[240px] rounded-2xl sm:rounded-3xl overflow-hidden bg-stone-100 group shadow-sm">
               <img 
-                src="/gallery/gallery_4.jpg" 
+                src="/gallery/gallery_4.webp" 
                 alt="Automated Pouch Making and Conversion" 
                 className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
               />
             </div>
             <div className="h-[160px] sm:h-[200px] lg:h-[240px] rounded-2xl sm:rounded-3xl overflow-hidden bg-stone-100 group shadow-sm">
               <img 
-                src="/gallery/gallery_5.jpg" 
+                src="/gallery/gallery_5.webp" 
                 alt="Packaging Engineering and Operations Team" 
                 className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
               />
             </div>
             <div className="h-[160px] sm:h-[200px] lg:h-[240px] rounded-2xl sm:rounded-3xl overflow-hidden bg-stone-100 group shadow-sm">
               <img 
-                src="/gallery/gallery_6.jpg" 
+                src="/gallery/gallery_6.webp" 
                 alt="Precision Slitting and Rewinding Machinery" 
                 className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
               />
             </div>
             <div className="h-[160px] sm:h-[200px] lg:h-[240px] rounded-2xl sm:rounded-3xl overflow-hidden bg-stone-100 group shadow-sm">
               <img 
-                src="/gallery/gallery_7.jpg" 
+                src="/gallery/gallery_7.webp" 
                 alt="Finished Goods Dispatch Logistics and Storage" 
                 className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
               />

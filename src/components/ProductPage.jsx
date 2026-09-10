@@ -79,7 +79,7 @@ export default function ProductPage({ selectedProduct = 'laminates', setSelected
       badge: 'LAMINATES',
       heroTitle: 'EXPLORE OUR PORTFOLIO',
       heroSubtitle: 'Every product has a better fit',
-      heroImage: '/product_hero.png',
+      heroImage: '/product_hero.webp',
       tagline: 'Precision engineered multi-layer barrier laminates for food, pharma, personal care & industrial products.',
       description: 'AB Polypacks manufactures state-of-the-art flexible laminates in 2-ply, 3-ply, and 4-ply combinations. Utilizing 10-color rotogravure printing and solvent-free lamination technology, our laminates safeguard product freshness, prevent light & gas transmission, and ensure structural stability.',
       structures: [
@@ -118,7 +118,7 @@ export default function ProductPage({ selectedProduct = 'laminates', setSelected
       badge: 'CUSTOM PRE-FORMED POUCHES',
       heroTitle: 'VERSATILE PRE-FORMED POUCHES FOR MODERN BRANDS',
       heroSubtitle: 'Stand-up pouches, zipper bags, spout pouches, and side-gusseted bags designed for maximum retail shelf presence, consumer convenience, and product freshness.',
-      heroImage: '/product_pouches.png',
+      heroImage: '/product_pouches.webp',
       tagline: 'Ergonomic, high-barrier pouch solutions tailored for liquid, solid, and powder applications.',
       description: 'AB Polypacks supplies pre-formed pouches engineered to stand out on retail shelves. Featuring options like tear notches, press-to-close zippers, ergonomic handles, and recloseable spouts, our pouches deliver superior barrier protection and consumer ease.',
       structures: [
@@ -155,7 +155,7 @@ export default function ProductPage({ selectedProduct = 'laminates', setSelected
       badge: 'FULL BODY SHRINK SLEEVES',
       heroTitle: '360-DEGREE FULL BODY BRANDING & TAMPER EVIDENCE',
       heroSubtitle: 'High-shrink PETG and PVC sleeves offering full-coverage vibrant graphics, tamper-evident neck seals, and seamless contour fitting on complex container shapes.',
-      heroImage: '/product_shrink_sleeves.png',
+      heroImage: '/product_shrink_sleeves.webp',
       tagline: 'Transform any container with high-impact 360° graphics and built-in security features.',
       description: 'Our full-body shrink sleeves hug every curve of glass, plastic, or metal containers. Printed on high-clarity PETG and PVC shrink substrates, AB Polypacks delivers head-turning brand aesthetics paired with tamper-evident neck bands.',
       structures: [
@@ -191,7 +191,7 @@ export default function ProductPage({ selectedProduct = 'laminates', setSelected
       badge: 'WRAP-AROUND LABELS',
       heroTitle: 'PRECISION BOPP LABELS FOR HIGH-SPEED BOTTLING',
       heroSubtitle: 'Clear, metallic, and pearlized roll-fed wrap-around labels optimized for high-volume beverage, mineral water, and household container labeling machines.',
-      heroImage: '/product_wrap_around_labels.png',
+      heroImage: '/product_wrap_around_labels.webp',
       tagline: 'High-speed roll-fed labeling solution offering high tensile strength and vibrant graphics.',
       description: 'AB Polypacks produces premium BOPP wrap-around labels designed for continuous roll-fed labeling machinery operating at ultra-high speeds. Resistant to moisture, scuffing, and tears, these labels enhance bottle aesthetics while optimizing production throughput.',
       structures: [
@@ -227,7 +227,7 @@ export default function ProductPage({ selectedProduct = 'laminates', setSelected
       badge: 'COLLATION SHRINK FILMS',
       heroTitle: 'HEAVY-DUTY BUNDLING & TRANSIT SHRINK FILMS',
       heroSubtitle: 'High-strength LDPE collation shrink films engineered for secondary multi-pack bundling of bottles, cans, cartons, and industrial goods during transit.',
-      heroImage: '/product_collation_shrink_film.png',
+      heroImage: '/product_collation_shrink_film.webp',
       tagline: 'Tough, puncture-resistant bundling film replacing expensive corrugated boxes.',
       description: 'AB Polypacks manufactures heavy-duty LDPE collation shrink films designed to unitize products into tight, secure bundles. Offering high holding force, superior puncture resistance, and clear optics, our collation films cut packaging costs while protecting cargo during transport.',
       structures: [
@@ -449,7 +449,7 @@ export default function ProductPage({ selectedProduct = 'laminates', setSelected
             >
               <div className="relative z-10 w-full max-w-[280px] sm:max-w-[320px] lg:max-w-[360px] animate-float-pouch">
                 <img
-                  src="/product_lays_chips.png"
+                  src="/product_lays_chips.webp"
                   alt="AB Polypacks High Barrier Packaging Pouch"
                   className="w-full h-auto object-contain"
                 />

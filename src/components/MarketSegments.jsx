@@ -7,43 +7,43 @@ export default function MarketSegments({ onOpenQuoteModal }) {
     tallLeft: {
       id: 'bakery-confectionery',
       title: 'Bakery & Confectionery',
-      image: '/industry_bakery_confectionery.png',
-      fallbackImage: '/product_food.png',
+      image: '/industry_bakery_confectionery.webp',
+      fallbackImage: '/product_food.webp',
       requirements: 'Moisture barrier, aroma retention, oxygen control, grease resistance, seal integrity, high-speed machinability'
     },
     middleCol1Top: {
       id: 'snacks-savoury',
       title: 'Snacks & Savoury',
-      image: '/industry_snacks_savoury.png',
-      fallbackImage: '/product_food.png',
+      image: '/industry_snacks_savoury.webp',
+      fallbackImage: '/product_food.webp',
       requirements: 'High moisture & oxygen barrier, oil/grease resistance, puncture resistance, seal integrity, aroma retention'
     },
     middleCol1Bottom: {
       id: 'condiments-processed-foods',
       title: 'Condiments & Processed Foods',
-      image: '/industry_condiments.png',
-      fallbackImage: '/product_food.png',
+      image: '/industry_condiments.webp',
+      fallbackImage: '/product_food.webp',
       requirements: 'Liquid/product compatibility, high seal integrity, barrier protection, puncture resistance, leak prevention'
     },
     middleCol2Top: {
       id: 'staple-dry-foods',
       title: 'Staple & Dry Foods',
       image: 'https://images.unsplash.com/photo-1586528116493-a029325540fa?q=80&w=800&auto=format&fit=crop',
-      fallbackImage: '/highlight_supply.png',
+      fallbackImage: '/highlight_supply.webp',
       requirements: 'Moisture barrier, oxygen protection where required, powder containment, seal integrity, handling strength'
     },
     middleCol2Bottom: {
       id: 'spices-seasonings',
       title: 'Spices & Seasonings',
-      image: '/industry_spices.png',
-      fallbackImage: '/product_food.png',
+      image: '/industry_spices.webp',
+      fallbackImage: '/product_food.webp',
       requirements: 'Aroma retention, moisture protection, oxygen barrier, light protection where required, excellent printability'
     },
     tallRight: {
       id: 'tea-coffee',
       title: 'Tea & Coffee',
-      image: '/industry_tea_coffee.png',
-      fallbackImage: '/product_beverage.png',
+      image: '/industry_tea_coffee.webp',
+      fallbackImage: '/product_beverage.webp',
       requirements: 'High aroma barrier, oxygen/moisture protection, light protection where required, seal integrity, extended shelf-life support'
     }
   };
@@ -53,43 +53,43 @@ export default function MarketSegments({ onOpenQuoteModal }) {
     leftColTop: {
       id: 'beverages-liquid-foods',
       title: 'Beverages & Liquid Foods',
-      image: '/industry_beverages.png',
-      fallbackImage: '/product_spout.png',
+      image: '/industry_beverages.webp',
+      fallbackImage: '/product_spout.webp',
       requirements: 'High barrier performance, seal integrity, mechanical durability, product compatibility, transport resilience'
     },
     leftColBottom: {
       id: 'dairy-frozen-foods',
       title: 'Dairy & Frozen Foods',
-      image: '/industry_dairy_frozen.png',
-      fallbackImage: '/product_food.png',
+      image: '/industry_dairy_frozen.webp',
+      fallbackImage: '/product_food.webp',
       requirements: 'Moisture/vapour barrier, low-temperature performance, seal integrity, puncture resistance, product protection'
     },
     middleTall1: {
       id: 'protein-fresh-foods',
       title: 'Protein & Fresh Foods',
-      image: '/industry_frozen_protein.png',
-      fallbackImage: '/product_spices.png',
+      image: '/industry_frozen_protein.webp',
+      fallbackImage: '/product_spices.webp',
       requirements: 'High barrier structures, oxygen control, moisture resistance, puncture resistance, leak prevention, hygiene and food-safety considerations'
     },
     middleTall2: {
       id: 'seeds-agricultural-products',
       title: 'Seeds & Agricultural Products',
-      image: '/industry_seeds.png',
-      fallbackImage: '/product_spices.png',
+      image: '/industry_seeds.webp',
+      fallbackImage: '/product_spices.webp',
       requirements: 'Moisture control, oxygen management where required, mechanical protection, extended storage performance, printability'
     },
     rightColTop: {
       id: 'personal-care-hygiene',
       title: 'Personal Care & Hygiene',
-      image: '/industry_household_personal_care.png',
-      fallbackImage: '/product_spout.png',
+      image: '/industry_household_personal_care.webp',
+      fallbackImage: '/product_spout.webp',
       requirements: 'Moisture resistance, seal integrity, chemical/product compatibility, puncture resistance, dispensing functionality where applicable'
     },
     rightColBottom: {
       id: 'textiles-industrial-goods',
       title: 'Textiles & Industrial Consumer Goods',
-      image: '/product_spout.png',
-      fallbackImage: '/product_beverage.png',
+      image: '/product_spout.webp',
+      fallbackImage: '/product_beverage.webp',
       requirements: 'Abrasion resistance, moisture/dust protection, tensile strength, handling durability, visual presentation'
     }
   };

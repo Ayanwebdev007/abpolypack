@@ -58,7 +58,7 @@ export default function GlobalReach() {
           {/* Scaled Map Image */}
           <div className="flex-1 w-full flex items-center justify-center lg:justify-start overflow-hidden">
             <img 
-              src="/global_map.png" 
+              src="/global_map.webp" 
               alt="Global Export Map" 
               className="w-full max-w-3xl lg:max-w-4xl h-auto max-h-[380px] sm:max-h-[420px] lg:max-h-[460px] object-contain select-none mix-blend-multiply"
             />

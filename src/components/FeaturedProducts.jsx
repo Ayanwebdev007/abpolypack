@@ -7,7 +7,7 @@ export default function FeaturedProducts({ onOpenQuoteModal, onSelectProduct }) 
       id: 'laminates',
       title: 'Laminates',
       subtitle: 'Laminates for protection.',
-      image: '/product_laminates.png',
+      image: '/product_laminates.webp',
       colSpan: 'col-span-12 lg:col-span-7',
       height: 'h-[360px] sm:h-[400px]'
     },
@@ -15,7 +15,7 @@ export default function FeaturedProducts({ onOpenQuoteModal, onSelectProduct }) 
       id: 'pouches',
       title: 'Pouches',
       subtitle: 'Pouches for versatility.',
-      image: '/product_pouches.png',
+      image: '/product_pouches.webp',
       colSpan: 'col-span-12 lg:col-span-5',
       height: 'h-[360px] sm:h-[400px]'
     },
@@ -23,7 +23,7 @@ export default function FeaturedProducts({ onOpenQuoteModal, onSelectProduct }) 
       id: 'shrink-sleeves',
       title: 'Shrink Sleeves',
       subtitle: 'Shrink Sleeves for standout branding.',
-      image: '/product_shrink_sleeves.png',
+      image: '/product_shrink_sleeves.webp',
       colSpan: 'col-span-12',
       height: 'h-[340px] sm:h-[400px] lg:h-[450px]'
     },
@@ -31,7 +31,7 @@ export default function FeaturedProducts({ onOpenQuoteModal, onSelectProduct }) 
       id: 'wrap-around-labels',
       title: 'Wrap-around Labels',
       subtitle: 'Wrap-around Labels for efficient presentation.',
-      image: '/product_wrap_around_labels.png',
+      image: '/product_wrap_around_labels.webp',
       colSpan: 'col-span-12 lg:col-span-5',
       height: 'h-[320px] sm:h-[350px]'
     },
@@ -39,7 +39,7 @@ export default function FeaturedProducts({ onOpenQuoteModal, onSelectProduct }) 
       id: 'collation-shrink-films',
       title: 'Collation Shrink Films',
       subtitle: 'Collation Shrink Films for secure bundling.',
-      image: '/product_collation_shrink_film.png',
+      image: '/product_collation_shrink_film.webp',
       colSpan: 'col-span-12 lg:col-span-7',
       height: 'h-[320px] sm:h-[350px]'
     }
@@ -130,7 +130,7 @@ export default function FeaturedProducts({ onOpenQuoteModal, onSelectProduct }) 
               {/* 4. White / Gray Watermark Logo Sliding in from Right on Hover with Subtle Opacity */}
               <div className="absolute -right-6 sm:-right-8 top-1/2 -translate-y-1/2 translate-x-10 group-hover:translate-x-0 opacity-0 group-hover:opacity-10 transition-all duration-500 ease-out z-[6] pointer-events-none w-56 sm:w-72 lg:w-96 select-none">
                 <img 
-                  src="/logo.png" 
+                  src="/logo.webp" 
                   alt="AB Polypacks Watermark" 
                   className="w-full h-auto object-contain filter brightness-0 invert" 
                 />

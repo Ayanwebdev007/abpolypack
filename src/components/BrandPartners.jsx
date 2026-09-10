@@ -5,7 +5,7 @@ export default function BrandPartners() {
     {
       id: 'coca-cola',
       name: 'Coca-Cola',
-      logo: '/brands/coca-cola.png'
+      logo: '/brands/coca-cola.webp'
     },
     {
       id: 'pepsico',
@@ -20,7 +20,7 @@ export default function BrandPartners() {
     {
       id: 'itc',
       name: 'ITC',
-      logo: '/brands/itc.png'
+      logo: '/brands/itc.webp'
     },
     {
       id: 'emami',
@@ -35,12 +35,12 @@ export default function BrandPartners() {
     {
       id: 'anmol',
       name: 'Anmol',
-      logo: '/brands/anmol.jpg'
+      logo: '/brands/anmol.webp'
     },
     {
       id: 'hul',
       name: 'HUL',
-      logo: '/brands/hul.png'
+      logo: '/brands/hul.webp'
     }
   ];
 

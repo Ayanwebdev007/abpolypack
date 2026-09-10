@@ -7,25 +7,25 @@ export default function EmployeeStories() {
     {
       name: "Priyanka Ghosh",
       designation: "Marketing Manager",
-      image: "/employee_priyanka.jpg",
+      image: "/employee_priyanka.webp",
       quote: "“What makes AB Polypacks feel different is the sense that everyone is part of the journey.” You don’t feel like you are working on something separate from the bigger picture. Whether you are dealing with a customer, developing an idea or solving an everyday challenge, you can see how your work connects with what the organisation is trying to achieve. There is also a strong willingness to collaborate. People bring different strengths to the table, and that often leads to outcomes that are better than what any one person could have created alone. I’ve grown professionally through that experience, but I’ve also learned the value of listening, adapting and trusting the people around you. For me, that’s the real culture at AB Polypacks: We grow as individuals, and we move forward together."
     },
     {
       name: "Ranajit Dey",
       designation: "Production Planning Head",
-      image: "/employee_biswadip.jpg",
+      image: "/employee_biswadip.webp",
       quote: "“The most satisfying part of my job is seeing a plan turn into something real.” You start with a requirement, a deadline and a set of constraints. Then the real work begins. You coordinate with different teams, make adjustments, solve bottlenecks and keep everyone aligned. Some days go exactly to plan. Others definitely don't. But that is where teamwork matters. At AB Polypacks, I’ve found that people are willing to communicate openly and take responsibility. That makes it much easier to respond when priorities shift or a challenge comes up unexpectedly. “For me, planning is ultimately about creating confidence — confidence that the right work will happen at the right time, and that the team is ready when it matters.”"
     },
     {
       name: "Nabin Mondal",
       designation: "Supply Chain Head",
-      image: "/employee_amalin.jpg",
+      image: "/employee_amalin.webp",
       quote: "“For us, a customer commitment starts much earlier than production.” It starts with knowing what we need, when we need it and where it needs to come from. My role is to make sure the supply chain is prepared—from sourcing and inventory to coordination with production and timely dispatch. What I value at AB Polypacks is the amount of collaboration involved. Supply chain cannot work in isolation. You have to understand what production needs, what customers expect and where potential challenges might arise. That means staying alert, communicating early and solving issues before they become problems. “The best supply chain is the one that makes everything feel effortless to the customer.”"
     },
     {
       name: "Dr Aroop Mondal",
       designation: "R&D Manager",
-      image: "/employee_navin.jpg",
+      image: "/employee_navin.webp",
       quote: "“A difficult requirement is usually where the interesting work begins.” When a customer asks for something better — more protection, lower material use, improved efficiency or a different performance characteristic — our first response shouldn't be to say, “that's difficult”. It should be: “Let's understand why.” That is how I approach R&D at AB Polypacks. We study the requirement, explore materials and structures, test different approaches and work closely with production and quality teams to make sure the final solution is practical and repeatable. What I value most is seeing technical work create a real business outcome. “When an idea leaves the lab and starts making a difference for a customer, that's when research becomes meaningful.”"
     }
   ];
