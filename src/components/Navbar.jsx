@@ -117,8 +117,10 @@ export default function Navbar({ activeSection, setActiveSection, currentPage, s
     if (sectionId === 'products' || (subItem && productKeyMap[subItem])) {
       const targetProduct = productKeyMap[subItem] || 'laminates';
       if (setSelectedProduct) setSelectedProduct(targetProduct);
-      if (setCurrentPage) setCurrentPage('products');
-      window.scrollTo({ top: 0, behavior: 'instant' });
+      if (currentPage !== 'products') {
+        if (setCurrentPage) setCurrentPage('products');
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      }
       return;
     }
 

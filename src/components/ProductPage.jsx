@@ -61,7 +61,6 @@ export default function ProductPage({ selectedProduct = 'laminates', setSelected
     if (setSelectedProduct) {
       setSelectedProduct(tabId);
     }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const socialIcons = [
@@ -260,6 +259,132 @@ export default function ProductPage({ selectedProduct = 'laminates', setSelected
     }
   };
 
+  const requirementsData = {
+    'laminates': {
+      badge: 'LAMINATES',
+      title: 'FROM PRODUCT REQUIREMENT TO LAMINATE',
+      intro: 'The right laminate starts with the product — not with a pre-selected film combination. At AB Polypacks, we look at what the pack needs to protect, withstand, seal, preserve and communicate, then engineer the structure around those requirements.',
+      prompt: 'What matters most when matching laminate performance to your product requirements',
+      subPrompt: null,
+      leftFeatures: [
+        { icon: Hourglass, title: 'Shelf Life', subtitle: 'OTR, WVTR, structure integrity' },
+        { icon: Droplet, title: 'Freshness', subtitle: 'Oxygen / moisture barrier, aroma retention' },
+        { icon: Hexagon, title: 'Mechanical Strength', subtitle: 'Tensile, puncture, impact, tear' },
+        { icon: Gauge, title: 'High-Speed Filling', subtitle: 'COF, web stability, sealing behaviour' }
+      ],
+      rightFeatures: [
+        { icon: ShieldCheck, title: 'Seal Integrity', subtitle: 'Seal strength, seal initiation, contamination tolerance' },
+        { icon: Sparkles, title: 'Print Quality', subtitle: 'Surface energy, ink adhesion, registration' },
+        { icon: Package, title: 'Distribution', subtitle: 'Flex-crack resistance, bond integrity, dimensional stability' },
+        { icon: Recycle, title: 'Sustainability', subtitle: 'Material intensity, recyclability pathway, downgauging potential' }
+      ],
+      centerImage: '/product_lays_chips.webp',
+      concludingNarrative: [
+        'At AB Polypacks, we start with these requirements and engineer the structure around them. Each layer has a defined role — whether it is delivering oxygen or moisture barrier, mechanical strength, printability or heat-sealing performance — and the final construction is selected around the product, filling process, target shelf life and distribution conditions. With solvent-based, solventless and extrusion-coating lamination, we can develop multilayer structures tailored to specific applications. The result is not simply a combination of films; it is a purpose-built structure where every layer earns its place and every property works towards the same outcome.'
+      ]
+    },
+    'pouches': {
+      badge: 'POUCHES',
+      title: 'FROM PRODUCT REQUIREMENT TO POUCH',
+      intro: 'The right pouch starts with the product — not with a pre-selected format. At AB Polypacks, we look at what the pouch needs to contain, protect, withstand, seal, dispense and deliver, then engineer the format around those requirements. What matters most when matching pouch performance to your product and process requirements.',
+      prompt: 'The key performance criteria that define the right pouch for your product and process.',
+      subPrompt: null,
+      leftFeatures: [
+        { icon: ShieldCheck, title: 'Product Protection', subtitle: 'Barrier performance, product compatibility, moisture / oxygen protection, aroma retention' },
+        { icon: Hourglass, title: 'Shelf Life', subtitle: 'OTR, WVTR, structural integrity, seal performance' },
+        { icon: Hexagon, title: 'Mechanical Strength', subtitle: 'Tensile strength, puncture resistance, tear resistance, impact / drop performance' },
+        { icon: Gauge, title: 'High-Speed Filling', subtitle: 'COF, web stability, dimensional consistency, machineability' },
+        { icon: Droplet, title: 'Leak Resistance', subtitle: 'Seal integrity, pouch geometry, spout / fitment performance where applicable' }
+      ],
+      rightFeatures: [
+        { icon: Zap, title: 'Thermal Performance', subtitle: 'Heat resistance, hot-fill / pasteurisation / retort suitability where applicable' },
+        { icon: Package, title: 'User Convenience', subtitle: 'Opening behaviour, dispensing, pouring, reclosure, handling' },
+        { icon: Sparkles, title: 'Print Quality', subtitle: 'Surface characteristics, ink adhesion, registration, visual consistency' },
+        { icon: Layers, title: 'Distribution', subtitle: 'Compression, flex-crack resistance, puncture / impact resistance, dimensional stability' },
+        { icon: Recycle, title: 'Sustainability', subtitle: 'Material intensity, downgauging potential, recyclability pathway, resource efficiency' }
+      ],
+      centerImage: '/product_lays_chips.webp',
+      concludingNarrative: [
+        'At AB Polypacks, we start with these requirements and engineer the pouch structure and format around them. Each element has a defined role — from the film structure and barrier layer to the sealant, geometry, gusset, spout or functional feature — and the final construction is selected around the product, filling conditions, target shelf life, handling environment and intended user experience. Our pouching capabilities include three-side seal, centre-seal, stand-up, pillow, spout, shaped and customised pouches, allowing the finished format to be aligned with different product, process and market requirements. The result is not simply a bag made to a dimension; it is a purpose-built pouch where structure, format and function work together towards the same outcome. The right pouch does more than contain. It protects the product, performs on the line and works through the journey.'
+      ]
+    },
+    'shrink-sleeves': {
+      badge: 'SHRINK SLEEVES',
+      title: 'FROM CONTAINER PROFILE TO SHRINK SLEEVE',
+      intro: 'The right shrink sleeve starts with the container — not with a pre-selected film or artwork. At AB Polypacks, we look at the container geometry, required coverage, shrink behaviour, graphics, application conditions and end-use expectations, then engineer the sleeve around those requirements.',
+      prompt: 'The key performance criteria that define the right shrink sleeve for your container, application and brand requirements.',
+      subPrompt: null,
+      leftFeatures: [
+        { icon: Hourglass, title: 'Shrink Performance', subtitle: 'Shrink ratio, shrink uniformity, directional behaviour, dimensional stability' },
+        { icon: ShieldCheck, title: 'Container Coverage', subtitle: 'Container height, circumference, taper, radii, shoulder and neck profile' },
+        { icon: Sparkles, title: 'Artwork Accuracy', subtitle: 'Distortion compensation, registration, critical graphics, barcode orientation' },
+        { icon: CheckCircle2, title: 'Seam Integrity', subtitle: 'Seam strength, seam position, consistency, visual appearance' },
+        { icon: Layers, title: 'Film Performance', subtitle: 'Gauge, clarity / opacity, surface characteristics, mechanical properties' }
+      ],
+      rightFeatures: [
+        { icon: Sparkles, title: 'Print Quality', subtitle: 'Colour consistency, ink adhesion, registration, graphic definition' },
+        { icon: Gauge, title: 'Application Performance', subtitle: 'Shrink-tunnel compatibility, application speed, thermal profile, sleeve positioning' },
+        { icon: Hexagon, title: 'Reel Quality', subtitle: 'Winding consistency, lay-flat dimensions, defect control, downstream machinability' },
+        { icon: ShieldCheck, title: 'Finished Appearance', subtitle: 'Wrinkling, distortion, coverage, seam visibility, overall visual conformity' },
+        { icon: Recycle, title: 'Sustainability', subtitle: 'Material efficiency, downgauging potential, material selection, recyclability considerations' }
+      ],
+      centerImage: '/product_lays_chips.webp',
+      concludingNarrative: [
+        'At AB Polypacks, we start with these requirements and engineer the sleeve structure and conversion process around them. Each element has a defined role — from the film substrate and artwork compensation to seaming, rewinding and final shrink application — and the finished construction is selected around the container profile, visual identity, application equipment and operating conditions. Our shrink-sleeve capability includes seamless full-body sleeves using PVC and PETG films, supported by automated Karlville equipment and high-speed production capability. The process incorporates precision seaming and controlled rewinding to support consistent downstream application. The result is not simply a printed film formed into a sleeve; it is a purpose-built structure where material behaviour, graphics, dimensions and application performance work together towards the same outcome. The right shrink sleeve does more than follow the shape. It brings the shape, the brand and the application together.'
+      ]
+    },
+    'wrap-around-labels': {
+      badge: 'WRAP-AROUND LABELS',
+      title: 'FROM CONTAINER TO BRAND EXPRESSION',
+      intro: 'The right wrap-around label starts with the container — not with a pre-selected substrate or artwork. At AB Polypacks, we consider the container geometry, label material, print requirements, application method, adhesive performance and end-use environment, then engineer the label around those requirements.',
+      prompt: 'The key performance criteria that define the right wrap-around label for your container, application and brand requirements.',
+      subPrompt: null,
+      leftFeatures: [
+        { icon: ShieldCheck, title: 'Container Compatibility', subtitle: 'Container material, shape, diameter, surface characteristics, taper and application area' },
+        { icon: CheckCircle2, title: 'Adhesion', subtitle: 'Bond strength, substrate compatibility, adhesive performance, temperature and moisture resistance' },
+        { icon: Gauge, title: 'Application Performance', subtitle: 'Application speed, label positioning, overlap consistency, machineability and web stability' },
+        { icon: Sparkles, title: 'Print Quality', subtitle: 'Colour consistency, registration, ink adhesion, graphic definition and brand reproduction' },
+        { icon: Layers, title: 'Dimensional Stability', subtitle: 'Gauge consistency, curl, shrinkage, web stability and resistance to deformation' }
+      ],
+      rightFeatures: [
+        { icon: Hexagon, title: 'Mechanical Strength', subtitle: 'Tear resistance, abrasion resistance, handling durability and substrate integrity' },
+        { icon: Droplet, title: 'Moisture / Environmental Resistance', subtitle: 'Water resistance, condensation tolerance, temperature exposure and storage conditions' },
+        { icon: FileText, title: 'Barcode & Variable Data', subtitle: 'Print clarity, registration, contrast, readability and positioning' },
+        { icon: ShieldCheck, title: 'Label Conformity', subtitle: 'Length, width, overlap, edge alignment, winding direction and roll consistency' },
+        { icon: Recycle, title: 'Sustainability', subtitle: 'Material efficiency, downgauging potential, substrate selection and recyclability considerations' }
+      ],
+      centerImage: '/product_lays_chips.webp',
+      concludingNarrative: [
+        'At AB Polypacks, we start with these requirements and engineer the label structure and conversion process around them. Each element has a defined role — from the substrate and print surface to ink system, adhesive compatibility, dimensions and application characteristics — with the final construction selected around the container, filling and labelling process, operating environment and intended shelf presentation. Our wrap-around label capability is designed to support applications where high-quality graphics, efficient coverage and reliable high-speed application need to work together. The result is not simply a printed strip wrapped around a container; it is a purpose-built labelling format where substrate, graphics, adhesion and application performance come together to deliver a consistent finished pack. The right label does more than identify the product. It carries the brand from the production line to the shelf.'
+      ]
+    },
+    'collation-shrink-films': {
+      badge: 'COLLATION SHRINK FILMS',
+      title: 'FROM PRODUCT GROUPING TO PACK STABILITY',
+      intro: 'The right collation shrink wrap starts with the product group — not with a pre-selected film or shrink specification. At AB Polypacks, we consider pack configuration, product dimensions, film characteristics, shrink behaviour, bundling requirements, application speed and distribution conditions, then engineer the wrap around those requirements.',
+      prompt: 'The key performance criteria that define the right collation shrink wrap for your products, pack configuration and distribution journey.',
+      subPrompt: null,
+      leftFeatures: [
+        { icon: ShieldCheck, title: 'Load Stability', subtitle: 'Bundle integrity, product movement, shrink retention, pack configuration' },
+        { icon: Hourglass, title: 'Shrink Performance', subtitle: 'Shrink ratio, uniformity, directional behaviour, temperature response' },
+        { icon: Hexagon, title: 'Mechanical Strength', subtitle: 'Tensile strength, puncture resistance, tear propagation, impact performance' },
+        { icon: Layers, title: 'Film Integrity', subtitle: 'Thickness consistency, gauge control, toughness, resistance to handling damage' },
+        { icon: Gauge, title: 'Packaging Efficiency', subtitle: 'Material utilisation, pack density, film consumption, optimisation potential' }
+      ],
+      rightFeatures: [
+        { icon: Zap, title: 'High-Speed Application', subtitle: 'Machineability, web stability, feeding behaviour, sealing / cutting consistency' },
+        { icon: CheckCircle2, title: 'Product Protection', subtitle: 'Resistance to dust, moisture, abrasion and handling-related damage' },
+        { icon: Package, title: 'Distribution Performance', subtitle: 'Compression, stacking, vibration, drop and transport resistance' },
+        { icon: Sparkles, title: 'Visual Presentation', subtitle: 'Clarity, printability where applicable, shrink uniformity, finished-pack appearance' },
+        { icon: Recycle, title: 'Sustainability', subtitle: 'Material efficiency, downgauging potential, waste reduction, responsible material selection' }
+      ],
+      centerImage: '/product_lays_chips.webp',
+      concludingNarrative: [
+        'At AB Polypacks, we start with these requirements and engineer the film specification and shrink behaviour around the product configuration and application process. Each element has a defined role — from film gauge and mechanical properties to shrink characteristics, pack configuration and application conditions — with the final construction selected around the number and geometry of products being collated, packaging equipment, distribution environment and required finished-pack integrity. Our collation shrink capability is designed for applications where multiple individual products need to be grouped, secured and protected as one stable transport or retail unit, with the film providing controlled shrink, mechanical strength and reliable retention throughout handling and distribution. The result is not simply a film wrapped around multiple products; it is a purpose-built bundling structure where film performance, shrink behaviour, pack configuration and application efficiency work together towards the same outcome. The right collation wrap does more than hold products together. It keeps the entire pack stable through the journey.'
+      ]
+    }
+  };
+
   const navProducts = [
     { id: 'laminates', name: 'Laminates' },
     { id: 'pouches', name: 'Pouches' },
@@ -268,41 +393,29 @@ export default function ProductPage({ selectedProduct = 'laminates', setSelected
     { id: 'collation-shrink-films', name: 'Collation Shrink Films' }
   ];
 
-  const leftFeatures = [
-    { icon: Hourglass, title: 'Shelf Life', subtitle: 'OTR, WVTR, structure integrity' },
-    { icon: Droplet, title: 'Freshness', subtitle: 'Oxygen / moisture barrier, aroma retention' },
-    { icon: Hexagon, title: 'Mechanical Strength', subtitle: 'Tensile, puncture, impact, tear' },
-    { icon: Gauge, title: 'High-Speed Filling', subtitle: 'COF, web stability, sealing behaviour' }
-  ];
-
-  const rightFeatures = [
-    { icon: ShieldCheck, title: 'Seal Integrity', subtitle: 'Seal strength, seal initiation, contamination tolerance' },
-    { icon: Sparkles, title: 'Print Quality', subtitle: 'Surface energy, ink adhesion, registration' },
-    { icon: Package, title: 'Distribution', subtitle: 'Flex-crack resistance, bond integrity, dimensional stability' },
-    { icon: Recycle, title: 'Sustainability', subtitle: 'Material intensity, recyclability pathway, downgauging potential' }
-  ];
-
+  const heroData = productsData['laminates'];
   const currentData = productsData[activeTab] || productsData['laminates'];
+  const currentRequirement = requirementsData[activeTab] || requirementsData['laminates'];
 
   return (
     <div className="w-full min-h-screen bg-[#faf7f2] font-sans">
       
-      {/* 1. FULL-BLEED HERO SECTION (EXACT MATCH TO OUR STORY HERO STYLE) */}
+      {/* 1. FULL-BLEED HERO SECTION */}
       <section className="w-full h-screen min-h-[600px] relative overflow-hidden bg-black font-sans">
         
         {/* FULL-BLEED BACKGROUND MEDIA LAYER */}
         <div className="absolute inset-0 z-0">
           <img 
-            src={currentData.heroImage} 
-            alt={currentData.heroTitle} 
+            src={heroData.heroImage} 
+            alt={heroData.heroTitle} 
             className="w-full h-full object-cover object-center scale-105 transition-all duration-700"
           />
-          {/* Dark overlay (25%) + Bottom black gradient fade for high readability */}
+          {/* Dark overlay (35%) + Bottom black gradient fade for high readability */}
           <div className="absolute inset-0 bg-black/35 pointer-events-none z-10" />
           <div className="absolute inset-x-0 bottom-0 h-56 sm:h-72 bg-gradient-to-t from-black/90 via-black/45 to-transparent pointer-events-none z-10" />
         </div>
 
-        {/* LEFT SIDE: VERTICAL SOCIAL / CONTACT ICONS (HERO STYLE) */}
+        {/* LEFT SIDE: VERTICAL SOCIAL / CONTACT ICONS */}
         <div className="absolute left-2 sm:left-3 lg:left-4 top-1/2 -translate-y-1/2 z-30 hidden sm:flex flex-col items-center space-y-4">
           {socialIcons.map((item, idx) => {
             const IconComp = item.icon;
@@ -320,7 +433,7 @@ export default function ProductPage({ selectedProduct = 'laminates', setSelected
           })}
         </div>
 
-        {/* CENTER BOTTOM CONTENT AND BADGE (EXACT OUR STORY HERO LAYOUT & METRICS) */}
+        {/* CENTER BOTTOM CONTENT AND BADGE */}
         <div className="absolute inset-x-0 bottom-0 z-20 flex flex-col items-center justify-end pb-8 sm:pb-12 pointer-events-none">
           <div className="max-w-5xl w-full px-4 space-y-2 text-center pointer-events-auto flex flex-col items-center justify-center">
             
@@ -328,17 +441,17 @@ export default function ProductPage({ selectedProduct = 'laminates', setSelected
             <div className="flex items-center space-x-3 text-xs font-semibold text-white/80 tracking-widest uppercase mb-0.5">
               <span>PRODUCTS</span>
               <span className="w-8 h-[1.5px] bg-white/40"></span>
-              <span className="text-[#ed4d0d] font-bold text-sm">{currentData.badge}</span>
+              <span className="text-[#ed4d0d] font-bold text-sm">{heroData.badge}</span>
             </div>
 
             {/* Headline */}
             <h1 className="text-xl sm:text-3xl lg:text-[38px] font-bold text-white tracking-tight uppercase drop-shadow-md text-center leading-tight">
-              {currentData.heroTitle}
+              {heroData.heroTitle}
             </h1>
 
             {/* Subtext */}
             <p className="text-xs sm:text-sm lg:text-[15px] text-stone-200 font-light leading-relaxed max-w-2xl drop-shadow-sm text-center">
-              {currentData.heroSubtitle}
+              {heroData.heroSubtitle}
             </p>
 
           </div>
@@ -369,75 +482,100 @@ export default function ProductPage({ selectedProduct = 'laminates', setSelected
         </div>
       </section>
 
-      {/* 3. LAMINATES: FROM PRODUCT REQUIREMENT TO LAMINATE SECTION */}
+      {/* PRODUCT CATEGORY NAV TABS */}
+      <div className="sticky top-[72px] z-30 w-full bg-white/95 backdrop-blur-md border-b border-stone-200 py-3.5 px-4 shadow-sm">
+        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+          {navProducts.map((prod) => (
+            <button
+              key={prod.id}
+              onClick={() => handleTabChange(prod.id)}
+              className={`px-4 sm:px-6 py-2 rounded-full text-xs sm:text-sm font-semibold tracking-wide transition-all duration-200 ${
+                activeTab === prod.id
+                  ? 'bg-[#ed4d0d] text-white shadow-md scale-105'
+                  : 'bg-stone-100 text-stone-700 hover:bg-stone-200 border border-stone-200'
+              }`}
+            >
+              {prod.name}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* 3. FROM PRODUCT REQUIREMENT TO [PRODUCT] SECTION */}
       <section className="w-full bg-white py-16 sm:py-24 px-4 sm:px-8 lg:px-12 border-b border-stone-200 font-sans">
         <div className="max-w-7xl mx-auto space-y-6 text-center">
           
-          {/* Eyebrow & Title (Matching Hero & Section 2 Sizes) */}
+          {/* Eyebrow & Title */}
           <div className="flex flex-col items-center justify-center space-y-3 text-center">
             <span className="inline-block px-6 py-2 rounded-xl bg-[#ed4d0d] text-white text-base sm:text-lg lg:text-xl font-medium uppercase tracking-[0.15em] shadow-sm">
-              LAMINATES
+              {currentRequirement.badge}
             </span>
             <h2 className="text-xl sm:text-2xl lg:text-3xl font-medium text-stone-900 uppercase tracking-tight leading-tight">
-              FROM PRODUCT REQUIREMENT TO LAMINATE
+              {currentRequirement.title}
             </h2>
           </div>
 
-          {/* Description Copy (Matching Section 2 Paragraph Size) */}
+          {/* Description Copy */}
           <div className="text-stone-700 text-sm sm:text-base lg:text-[17px] leading-relaxed font-normal max-w-5xl mx-auto text-justify">
-            <p>
-              The right laminate starts with the product — not with a pre-selected film combination. At AB Polypacks, we look at what the pack needs to protect, withstand, seal, preserve and communicate, then engineer the structure around those requirements.
-            </p>
+            <p>{currentRequirement.intro}</p>
           </div>
 
           {/* Sub-heading / Prompt (Pill Bar) */}
-          <div className="pt-2 flex justify-center">
-            <div className="inline-flex items-center justify-center px-6 py-2 rounded-full bg-stone-100/90 border border-stone-200/80 text-stone-800 text-xs sm:text-sm md:text-base font-medium tracking-tight">
-              <span>What matters most when matching laminate performance to your product requirements</span>
+          <div className="pt-2 flex flex-col items-center justify-center space-y-2">
+            <div className="inline-flex items-center justify-center px-6 py-2 rounded-full bg-stone-100/90 border border-stone-200/80 text-stone-800 text-xs sm:text-sm md:text-base font-medium tracking-tight text-center">
+              <span>{currentRequirement.prompt}</span>
             </div>
+            {currentRequirement.subPrompt && (
+              <p className="text-xs sm:text-sm text-stone-500 font-medium tracking-wide">
+                {currentRequirement.subPrompt}
+              </p>
+            )}
           </div>
 
-          {/* 4 - Image - 4 Grid Section */}
+          {/* 4/6 - Image - 4/5 Grid Section */}
           <div 
             ref={gridRef}
             className="pt-8 sm:pt-10 grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 items-center max-w-7xl mx-auto overflow-hidden"
           >
             
-            {/* Left 4 Features (Col-span-4) - Slides in from Left */}
-            <div className="lg:col-span-4 space-y-8 sm:space-y-10">
-              {leftFeatures.map((item, idx) => (
-                <div 
-                  key={idx}
-                  style={{ 
-                    transitionDelay: `${idx * 180}ms`,
-                    transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)'
-                  }}
-                  className={`flex flex-row lg:flex-row-reverse items-center gap-4 sm:gap-6 transition-all duration-[1200ms] transform ${
-                    isGridVisible 
-                      ? 'translate-x-0 opacity-100' 
-                      : '-translate-x-28 sm:-translate-x-44 opacity-0'
-                  }`}
-                >
-                  {/* Extra Large Brand Blue Triangle Arrow (pointing right toward center) */}
-                  <svg 
-                    className="w-16 h-16 sm:w-20 sm:h-20 text-[#018ade] shrink-0" 
-                    viewBox="0 0 24 24" 
-                    fill="currentColor"
+            {/* Left Features (Col-span-4) - Slides in from Left */}
+            <div className={`lg:col-span-4 ${currentRequirement.leftFeatures.length > 4 ? 'space-y-5 sm:space-y-6' : 'space-y-8 sm:space-y-10'}`}>
+              {currentRequirement.leftFeatures.map((item, idx) => {
+                const IconComponent = item.icon || ShieldCheck;
+                return (
+                  <div 
+                    key={idx}
+                    style={{ 
+                      transitionDelay: `${idx * 150}ms`,
+                      transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)'
+                    }}
+                    className={`flex flex-row lg:flex-row-reverse items-center gap-4 sm:gap-6 transition-all duration-[1200ms] transform ${
+                      isGridVisible 
+                        ? 'translate-x-0 opacity-100' 
+                        : '-translate-x-28 sm:-translate-x-44 opacity-0'
+                    }`}
                   >
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
+                    {/* Extra Large Brand Blue Triangle Arrow (pointing right toward center) */}
+                    <svg 
+                      className="w-14 h-14 sm:w-18 sm:h-18 text-[#018ade] shrink-0" 
+                      viewBox="0 0 24 24" 
+                      fill="currentColor"
+                    >
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
 
-                  {/* Content */}
-                  <div className="flex-1 text-left lg:text-right">
-                    <h4 className="text-base sm:text-lg font-semibold text-stone-900 leading-snug">
-                      {item.title}
-                    </h4>
-                    <p className="text-xs sm:text-sm text-stone-600 font-normal mt-1 leading-relaxed">
-                      {item.subtitle}
-                    </p>
+                    {/* Content */}
+                    <div className="flex-1 text-left lg:text-right">
+                      <h4 className="text-base sm:text-lg font-semibold text-stone-900 leading-snug flex items-center justify-start lg:justify-end gap-2">
+                        <span>{item.title}</span>
+                      </h4>
+                      <p className="text-xs sm:text-sm text-stone-600 font-normal mt-1 leading-relaxed">
+                        {item.subtitle}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
 
             {/* Center Floating PNG (Col-span-4) - Scales in */}
@@ -449,57 +587,60 @@ export default function ProductPage({ selectedProduct = 'laminates', setSelected
             >
               <div className="relative z-10 w-full max-w-[280px] sm:max-w-[320px] lg:max-w-[360px] animate-float-pouch">
                 <img
-                  src="/product_lays_chips.webp"
+                  src={currentRequirement.centerImage}
                   alt="AB Polypacks High Barrier Packaging Pouch"
                   className="w-full h-auto object-contain"
                 />
               </div>
             </div>
 
-            {/* Right 4 Features (Col-span-4) - Slides in from Right */}
-            <div className="lg:col-span-4 space-y-8 sm:space-y-10">
-              {rightFeatures.map((item, idx) => (
-                <div 
-                  key={idx}
-                  style={{ 
-                    transitionDelay: `${idx * 180}ms`,
-                    transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)'
-                  }}
-                  className={`flex flex-row items-center gap-4 sm:gap-6 text-left transition-all duration-[1200ms] transform ${
-                    isGridVisible 
-                      ? 'translate-x-0 opacity-100' 
-                      : 'translate-x-28 sm:translate-x-44 opacity-0'
-                  }`}
-                >
-                  {/* Extra Large Brand Blue Triangle Arrow (pointing left toward center) */}
-                  <svg 
-                    className="w-16 h-16 sm:w-20 sm:h-20 text-[#018ade] shrink-0" 
-                    viewBox="0 0 24 24" 
-                    fill="currentColor"
+            {/* Right Features (Col-span-4) - Slides in from Right */}
+            <div className={`lg:col-span-4 ${currentRequirement.rightFeatures.length > 4 ? 'space-y-5 sm:space-y-6' : 'space-y-8 sm:space-y-10'}`}>
+              {currentRequirement.rightFeatures.map((item, idx) => {
+                const IconComponent = item.icon || Sparkles;
+                return (
+                  <div 
+                    key={idx}
+                    style={{ 
+                      transitionDelay: `${idx * 150}ms`,
+                      transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)'
+                    }}
+                    className={`flex flex-row items-center gap-4 sm:gap-6 text-left transition-all duration-[1200ms] transform ${
+                      isGridVisible 
+                        ? 'translate-x-0 opacity-100' 
+                        : 'translate-x-28 sm:translate-x-44 opacity-0'
+                    }`}
                   >
-                    <path d="M16 5v14l-11-7z" />
-                  </svg>
+                    {/* Extra Large Brand Blue Triangle Arrow (pointing left toward center) */}
+                    <svg 
+                      className="w-14 h-14 sm:w-18 sm:h-18 text-[#018ade] shrink-0" 
+                      viewBox="0 0 24 24" 
+                      fill="currentColor"
+                    >
+                      <path d="M16 5v14l-11-7z" />
+                    </svg>
 
-                  {/* Content */}
-                  <div className="flex-1 text-left">
-                    <h4 className="text-base sm:text-lg font-semibold text-stone-900 leading-snug">
-                      {item.title}
-                    </h4>
-                    <p className="text-xs sm:text-sm text-stone-600 font-normal mt-1 leading-relaxed">
-                      {item.subtitle}
-                    </p>
+                    {/* Content */}
+                    <div className="flex-1 text-left">
+                      <h4 className="text-base sm:text-lg font-semibold text-stone-900 leading-snug flex items-center gap-2">
+                        <span>{item.title}</span>
+                      </h4>
+                      <p className="text-xs sm:text-sm text-stone-600 font-normal mt-1 leading-relaxed">
+                        {item.subtitle}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
 
           </div>
 
-          {/* Concluding Narrative Section (Single Continuous Block, Justified Text) */}
-          <div className="pt-10 sm:pt-14 max-w-5xl mx-auto text-stone-700 text-sm sm:text-base lg:text-[17px] leading-relaxed font-normal text-justify">
-            <p>
-              At AB Polypacks, we start with these requirements and engineer the structure around them. Each layer has a defined role — whether it is delivering oxygen or moisture barrier, mechanical strength, printability or heat-sealing performance — and the final construction is selected around the product, filling process, target shelf life and distribution conditions. With solvent-based, solventless and extrusion-coating lamination, we can develop multilayer structures tailored to specific applications. The result is not simply a combination of films; it is a purpose-built structure where every layer earns its place and every property works towards the same outcome.
-            </p>
+          {/* Concluding Narrative Section */}
+          <div className="pt-10 sm:pt-14 max-w-5xl mx-auto text-stone-700 text-sm sm:text-base lg:text-[17px] leading-relaxed font-normal text-justify space-y-4">
+            {currentRequirement.concludingNarrative.map((para, i) => (
+              <p key={i}>{para}</p>
+            ))}
           </div>
 
         </div>
@@ -508,3 +649,4 @@ export default function ProductPage({ selectedProduct = 'laminates', setSelected
     </div>
   );
 }
+
