@@ -197,91 +197,91 @@ export default function CompanyOverviewPage({ onOpenQuoteModal }) {
     {
       id: '2006',
       year: '2006',
-      title: 'Foundational Ambition',
+      title: 'Vision Begins',
       description: 'Founded with a clear ambition to redefine possibilities in flexible packaging.',
       image: '/milestone_teaser_2006.webp'
     },
     {
       id: '2007-2008',
       year: '2007–2008',
-      title: 'Manufacturing Footprint',
+      title: 'Foundation Expands',
       description: 'Expanded our manufacturing footprint, strengthening the foundation for the journey ahead.',
       image: '/our_story_facility.webp'
     },
     {
       id: '2009-2010',
       year: '2009–2010',
-      title: 'Innovation Engine',
+      title: 'Innovation Begins',
       description: 'Strengthened our innovation engine through focused research, development and technical exploration.',
       image: '/gallery/gallery_1.webp'
     },
     {
       id: '2011-2012',
       year: '2011–2012',
-      title: 'Manufacturing Momentum',
+      title: 'Growth Accelerates',
       description: 'Manufacturing gained momentum as turnover reached ₹10.07 Cr, strengthening the platform for future growth.',
       image: '/gallery/gallery_2.webp'
     },
     {
       id: '2013-2014',
       year: '2013–2014',
-      title: 'Integrated Production',
+      title: 'Integration Advances',
       description: 'Advanced integrated production.',
       image: '/our_story_operator.webp'
     },
     {
       id: '2015-2016',
       year: '2015–2016',
-      title: 'Portfolio Expansion',
+      title: 'Portfolio Expands',
       description: 'Expanded our flexible packaging portfolio and strengthened our position as an end-to-end partner.',
       image: '/corporate_facility_bg.webp'
     },
     {
       id: '2017-2018',
       year: '2017–2018',
-      title: 'Capability & Growth',
+      title: 'Scale Accelerates',
       description: 'Accelerating technological advancement, strengthening process capabilities and customer-focused innovation, with turnover reaching ₹48.45 Cr.',
       image: '/gallery/gallery_3.webp'
     },
     {
       id: '2019-2020',
       year: '2019–2020',
-      title: 'Operational Excellence',
+      title: 'Capability Expands',
       description: 'Strengthened our integrated operations with the addition of new packaging machine lines, while raising the bar on quality, responsiveness and operational excellence.',
       image: '/gallery/gallery_4.webp'
     },
     {
       id: '2021-2022',
       year: '2021–2022',
-      title: 'Global Expansion',
+      title: 'Global Reach',
       description: 'Extending our global reach and advancing our international presence, achieving a turnover of ₹118.36 Cr.',
       image: '/global_export_map.webp'
     },
     {
       id: '2023',
       year: '2023',
-      title: 'Quality Discipline',
+      title: 'Quality Deepens',
       description: 'Quality became an even deeper discipline.',
       image: '/gallery/gallery_5.webp'
     },
     {
       id: '2024',
       year: '2024',
-      title: 'Material Science',
+      title: 'Science Advances',
       description: 'Advancing material science, multilayer structures and technical development for next-generation applications.',
       image: '/gallery/gallery_6.webp'
     },
     {
       id: '2025',
       year: '2025',
-      title: 'Scale & PepsiCo Partnership',
+      title: 'Momentum Builds',
       description: 'A year of stronger scale and momentum, marked by record production achievements and the addition of PepsiCo to our customer base.',
       image: '/gallery/gallery_7.webp'
     },
     {
       id: '2026',
       year: '2026',
-      title: 'The Journey Continues',
+      title: 'Future Unfolds',
       description: 'The journey continues, with new capabilities, new milestones and greater possibilities ahead.',
       image: '/milestone_teaser_2026.webp'
     }
