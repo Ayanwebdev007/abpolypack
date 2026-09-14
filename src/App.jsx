@@ -14,6 +14,7 @@ import OurLocation from './components/OurLocation';
 import EmployeeStories from './components/EmployeeStories';
 import CompanyOverviewPage from './components/CompanyOverviewPage';
 import ProductPage from './components/ProductPage';
+import ProvenancePage from './components/ProvenancePage';
 import Footer from './components/Footer';
 import QuoteModal from './components/QuoteModal';
 
@@ -128,6 +129,12 @@ export default function App() {
           <ProductPage
             selectedProduct={selectedProduct}
             setSelectedProduct={setSelectedProduct}
+            onOpenQuoteModal={handleOpenQuoteModal}
+          />
+        </main>
+      ) : currentPage === 'provenance-page' ? (
+        <main className="flex-1">
+          <ProvenancePage
             onOpenQuoteModal={handleOpenQuoteModal}
           />
         </main>

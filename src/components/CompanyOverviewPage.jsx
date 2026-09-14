@@ -327,20 +327,13 @@ export default function CompanyOverviewPage({ onOpenQuoteModal }) {
         <div className="absolute inset-x-0 bottom-0 z-20 flex flex-col items-center justify-end pb-8 sm:pb-10 pointer-events-none">
           <div className="max-w-5xl w-full px-4 space-y-1.5 text-center pointer-events-auto flex flex-col items-center justify-center">
             
-            {/* Slide Indicator Badge */}
-            <div className="flex items-center space-x-3 text-xs font-semibold text-white/80 tracking-widest uppercase mb-0.5">
-              <span>OUR STORY</span>
-              <span className="w-8 h-[1.5px] bg-white/40"></span>
-              <span className="text-[#ed4d0d] font-bold text-sm">OVERVIEW</span>
-            </div>
-
             {/* Headline */}
-            <h1 className="text-xl sm:text-3xl lg:text-[38px] font-bold text-white tracking-tight uppercase drop-shadow-md text-center leading-tight">
+            <h1 className="text-lg sm:text-2xl lg:text-[28px] xl:text-[30px] font-bold text-white tracking-tight uppercase drop-shadow-md text-center leading-tight">
               FROM THE FACTORY FLOOR TO THE FINAL HAND
             </h1>
 
             {/* Subtext */}
-            <p className="text-xs sm:text-sm lg:text-[15px] text-stone-200 font-light leading-relaxed max-w-2xl drop-shadow-sm text-center">
+            <p className="text-sm sm:text-base lg:text-[18px] text-stone-200 font-light leading-relaxed max-w-2xl drop-shadow-sm text-center">
               One integrated journey. Fewer compromises. Better control
             </p>
 

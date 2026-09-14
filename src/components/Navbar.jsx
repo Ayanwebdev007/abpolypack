@@ -124,6 +124,19 @@ export default function Navbar({ activeSection, setActiveSection, currentPage, s
       return;
     }
 
+    // Route to Dedicated Provenance Page
+    if (sectionId === 'provenance') {
+      if (setCurrentPage) {
+        if (currentPage !== 'provenance-page') {
+          setCurrentPage('provenance-page');
+          window.scrollTo({ top: 0, behavior: 'instant' });
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      }
+      return;
+    }
+
     // Route to Company Overview Page & Specific Sub-Sections
     if (subItem === 'Company Overview' || subItem === 'Vision & Mission' || subItem === 'Core Values' || subItem === 'Our Journey' || sectionId === 'our-story') {
       const sectionMap = {
@@ -160,7 +173,9 @@ export default function Navbar({ activeSection, setActiveSection, currentPage, s
     // Cross-page navigation: if on sub-page, navigate home first, then scroll
     if (currentPage && currentPage !== 'home') {
       let targetSection = 'hero';
-      if (sectionId === 'our-story' || sectionId === 'provenance' || subItem === 'Vision & Mission' || subItem === 'Core Values' || subItem === 'Leadership' || subItem === 'Our Journey') {
+      if (sectionId === 'provenance') {
+        targetSection = 'provenance';
+      } else if (sectionId === 'our-story' || subItem === 'Vision & Mission' || subItem === 'Core Values' || subItem === 'Leadership' || subItem === 'Our Journey') {
         targetSection = 'overview';
       } else if (sectionId === 'products' || subItem) {
         targetSection = 'products';
@@ -192,7 +207,9 @@ export default function Navbar({ activeSection, setActiveSection, currentPage, s
 
     // Standard homepage scroll navigation
     let targetSection = 'hero';
-    if (sectionId === 'our-story' || sectionId === 'provenance' || subItem === 'Vision & Mission' || subItem === 'Core Values' || subItem === 'Leadership' || subItem === 'Our Journey') {
+    if (sectionId === 'provenance') {
+      targetSection = 'provenance';
+    } else if (sectionId === 'our-story' || subItem === 'Vision & Mission' || subItem === 'Core Values' || subItem === 'Leadership' || subItem === 'Our Journey') {
       targetSection = 'overview';
     } else if (sectionId === 'products' || subItem) {
       targetSection = 'products';
