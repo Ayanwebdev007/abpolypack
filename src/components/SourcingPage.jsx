@@ -70,7 +70,7 @@ export default function SourcingPage({ onOpenQuoteModal }) {
               </p>
               <div className="flex flex-wrap gap-3">
                 {['HPL', 'IOCL', 'Dow Chemicals', 'Borouge'].map((supplier) => (
-                  <span key={supplier} className="px-4 py-2 bg-stone-50 border border-stone-200 rounded-full text-stone-800 font-medium text-sm hover:border-[#ed4d0d]/50 hover:bg-[#ed4d0d]/5 transition-colors">
+                  <span key={supplier} className="px-4 py-2 bg-[#018ade] border border-[#018ade] rounded-full text-white font-medium text-sm shadow-sm hover:bg-[#018ade]/90 transition-colors">
                     {supplier}
                   </span>
                 ))}
@@ -78,10 +78,10 @@ export default function SourcingPage({ onOpenQuoteModal }) {
             </div>
 
             {/* Process Consideration Box */}
-            <div className="bg-stone-900 text-white p-8 rounded-2xl shadow-sm flex flex-col justify-center space-y-4 hover:shadow-md transition-shadow">
-              <CheckCircle2 className="w-8 h-8 text-[#ed4d0d]" />
-              <p className="text-stone-200 text-lg leading-relaxed font-light">
-                Every incoming material is considered for <span className="text-white font-medium">consistency, process compatibility</span> and <span className="text-white font-medium">intended application</span> before it becomes part of the manufacturing chain.
+            <div className="bg-[#ed4d0d] text-white p-8 rounded-2xl shadow-sm flex flex-col justify-center space-y-4 hover:shadow-md transition-shadow">
+              <CheckCircle2 className="w-8 h-8 text-white" />
+              <p className="text-white/90 text-lg leading-relaxed font-light">
+                Every incoming material is considered for <span className="text-white font-semibold">consistency, process compatibility</span> and <span className="text-white font-semibold">intended application</span> before it becomes part of the manufacturing chain.
               </p>
             </div>
 
