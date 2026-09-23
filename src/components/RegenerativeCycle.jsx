@@ -36,11 +36,11 @@ export default function RegenerativeCycle({ onOpenQuoteModal }) {
       color: '#ed4d0d'
     },
     {
-      id: 'safety-compliance',
+      id: 'sourcing',
       stepNum: 3,
-      title: 'SAFETY & COMPLIANCE',
-      description: 'Performance must come with confidence.',
-      icon: FileCheck,
+      title: 'SOURCING',
+      description: 'Quality starts with who we source from.',
+      icon: Globe,
       color: '#ed4d0d'
     },
     {
@@ -68,11 +68,11 @@ export default function RegenerativeCycle({ onOpenQuoteModal }) {
       color: '#ed4d0d'
     },
     {
-      id: 'sourcing',
+      id: 'safety-compliance',
       stepNum: 7,
-      title: 'SOURCING',
-      description: 'Quality starts with who we source from.',
-      icon: Globe,
+      title: 'SAFETY & COMPLIANCE',
+      description: 'Performance must come with confidence.',
+      icon: FileCheck,
       color: '#ed4d0d'
     }
   ];

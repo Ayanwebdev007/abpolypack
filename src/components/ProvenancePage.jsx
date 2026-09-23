@@ -14,20 +14,20 @@ import {
   Layers
 } from 'lucide-react';
 
-export default function ProvenancePage({ onOpenQuoteModal }) {
+export default function ProvenancePage({ onOpenQuoteModal, onNavigatePage }) {
   const [activeStep, setActiveStep] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
   // 7 Core Pillars of AB POLYPACK Provenance & Quality Cycle:
   const pillars = [
     {
-      id: 'safety-compliance',
+      id: 'sourcing',
       stepNum: 1,
       stepBadge: '01',
-      title: 'SAFETY & COMPLIANCE',
-      subtitle: 'Food & Hygiene Safe',
-      description: 'US FDA & EU food-contact compliant raw materials. Certified for direct contact with food, beverages, and sensitive pharmaceutical products.',
-      icon: FileCheck,
+      title: 'SOURCING',
+      subtitle: 'Responsible Sourcing',
+      description: 'Global polymer partnerships with prime resin producers ensuring virgin-grade consistency, zero contamination, and full material batch origin.',
+      icon: Globe,
       color: '#ed4d0d', // Brand Primary Orange
       badgeBg: '#018ade', // Brand Blue Step Badge
       xDeg: 270 // 12 o'clock (Top)
@@ -45,13 +45,13 @@ export default function ProvenancePage({ onOpenQuoteModal }) {
       xDeg: 321.4 // ~1:30 o'clock
     },
     {
-      id: 'sourcing',
+      id: 'safety-compliance',
       stepNum: 3,
       stepBadge: '03',
-      title: 'SOURCING',
-      subtitle: 'Responsible Sourcing',
-      description: 'Global polymer partnerships with prime resin producers ensuring virgin-grade consistency, zero contamination, and full material batch origin.',
-      icon: Globe,
+      title: 'SAFETY & COMPLIANCE',
+      subtitle: 'Food & Hygiene Safe',
+      description: 'US FDA & EU food-contact compliant raw materials. Certified for direct contact with food, beverages, and sensitive pharmaceutical products.',
+      icon: FileCheck,
       color: '#ed4d0d',
       badgeBg: '#018ade',
       xDeg: 12.8 // ~3:30 o'clock (Right)
@@ -121,9 +121,37 @@ export default function ProvenancePage({ onOpenQuoteModal }) {
   const handleStepClick = (index) => {
     setActiveStep(index);
     setIsAutoPlaying(false);
+    if (pillars[index].id === 'sourcing' && onNavigatePage) {
+      onNavigatePage('sourcing-page');
+    }
   };
 
   const current = pillars[activeStep];
+
+  // Calculate 7 clockwise directional arrows along the background ellipse track
+  const arrowMidpoints = [
+    (270 + 321.4) / 2,     // SOURCING -> QUALITY
+    (321.4 + 372.8) / 2,   // QUALITY -> SAFETY & COMPLIANCE
+    (12.8 + 64.2) / 2,     // SAFETY & COMPLIANCE -> TRACEABILITY
+    (64.2 + 115.7) / 2,    // TRACEABILITY -> PERFORMANCE
+    (115.7 + 167.1) / 2,   // PERFORMANCE -> APPLICATION
+    (167.1 + 218.5) / 2,   // APPLICATION -> SUSTAINABILITY
+    (218.5 + 270) / 2      // SUSTAINABILITY -> SOURCING
+  ];
+
+  const arrowPositions = arrowMidpoints.map((deg) => {
+    const rad = (deg * Math.PI) / 180;
+    const rx = 350;
+    const ry = 210;
+    const x = rx * Math.cos(rad);
+    const y = ry * Math.sin(rad);
+
+    const dx = -rx * Math.sin(rad);
+    const dy = ry * Math.cos(rad);
+    const angle = (Math.atan2(dy, dx) * 180) / Math.PI;
+
+    return { x, y, angle };
+  });
 
   return (
     <div className="w-full min-h-screen bg-[#faf7f2] font-sans pb-16">
@@ -235,17 +263,45 @@ export default function ProvenancePage({ onOpenQuoteModal }) {
           {/* DESKTOP 3D ISOMETRIC ELLIPTICAL WHEEL (lg screens and above) */}
           <div className="hidden lg:flex relative w-full h-[680px] items-center justify-center select-none overflow-visible">
             
-            {/* 3D ISOMETRIC TRACK LINE (Light Grey) */}
-            <div 
-              className="absolute rounded-[50%] border-2 border-stone-200/80 pointer-events-none"
+            {/* 3D ISOMETRIC TRACK SVG WITH CLOCKWISE DIRECTIONAL ARROWS */}
+            <svg 
+              className="absolute pointer-events-none z-10"
               style={{
-                width: '700px',
-                height: '420px',
+                width: '740px',
+                height: '460px',
                 top: '50%',
                 left: '50%',
-                transform: 'translate(-50%, -50%)'
+                transform: 'translate(-50%, -50%)',
+                overflow: 'visible'
               }}
-            />
+              viewBox="0 0 740 460"
+            >
+              {/* Main Outer Dashed Ellipse Track Line */}
+              <ellipse 
+                cx="370" 
+                cy="230" 
+                rx="350" 
+                ry="210" 
+                fill="none" 
+                stroke="#d6d3d1" 
+                strokeWidth="2"
+                strokeDasharray="8 6"
+              />
+
+              {/* 7 Clockwise Directional Arrowheads */}
+              {arrowPositions.map((arrow, idx) => (
+                <g 
+                  key={idx} 
+                  transform={`translate(${370 + arrow.x}, ${230 + arrow.y}) rotate(${arrow.angle})`}
+                >
+                  <path 
+                    d="M -7 -5 L 7 0 L -7 5 L -3 0 Z" 
+                    fill="#ed4d0d" 
+                    className="drop-shadow-sm"
+                  />
+                </g>
+              ))}
+            </svg>
 
             {/* ----------------------------------------------------------- */}
             {/* CLEAN & SIMPLE CENTER LOGO BADGE                            */}
@@ -274,7 +330,7 @@ export default function ProvenancePage({ onOpenQuoteModal }) {
               {pillars.map((item, index) => {
                 const rad = (item.xDeg * Math.PI) / 180;
                 const rx = 350; // Horizontal semi-axis
-                const ry = 210; // Vertical semi-axis (Balanced Moderate Height)
+                const ry = 210; // Vertical semi-axis
 
                 const posX = rx * Math.cos(rad);
                 const posY = ry * Math.sin(rad);
@@ -282,86 +338,72 @@ export default function ProvenancePage({ onOpenQuoteModal }) {
                 const isActive = activeStep === index;
                 const IconComponent = item.icon;
 
-                // All 7 Floating Pillar Titles Centered Directly Below Each Podium Node
-                const calloutStyle = { top: '62px', left: '0px', transform: 'translateX(-50%)' };
-
                 return (
                   <div 
                     key={item.id}
-                    className="absolute top-1/2 left-1/2"
+                    onClick={() => handleStepClick(index)}
+                    className={`absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer select-none group transition-all duration-300 ease-out flex flex-col items-center justify-center ${
+                      isActive ? 'scale-110 z-30' : 'hover:scale-105 opacity-90 hover:opacity-100 z-20'
+                    }`}
                     style={{
-                      transform: `translate(calc(-50% + ${posX}px), calc(-50% + ${posY}px))`,
-                      zIndex: isActive ? 30 : 20
+                      top: `calc(50% + ${posY}px)`,
+                      left: `calc(50% + ${posX}px)`
                     }}
                   >
                     {/* -------------------------------------------------------- */}
-                    {/* 3D PEDESTAL STACK NODE (Centered on Ellipse Track)       */}
+                    {/* 3D PEDESTAL STACK NODE                                   */}
                     {/* -------------------------------------------------------- */}
-                    <div 
-                      onClick={() => handleStepClick(index)}
-                      className={`relative group cursor-pointer transition-all duration-300 ease-out flex flex-col items-center justify-center ${
-                        isActive ? '-translate-y-3 scale-110' : 'hover:-translate-y-1.5 hover:scale-105 opacity-90 hover:opacity-100'
-                      }`}
-                    >
-                      {/* Unified 3D Stack Container (Centered with -ml-16 -mt-11) */}
-                      <div className="relative w-32 h-22 -ml-16 -mt-11 select-none overflow-visible">
-                        
-                        {/* LAYER 1: BOTTOM COLORED BASE RIM (Solid Brand Orange Ellipse) */}
+                    <div className="relative w-32 h-22 select-none overflow-visible">
+                      
+                      {/* LAYER 1: BOTTOM COLORED BASE RIM (Solid Brand Orange Ellipse) */}
+                      <div 
+                        className="absolute bottom-0 left-0 w-32 h-10 rounded-[50%] transition-all duration-300 shadow-sm"
+                        style={{
+                          backgroundColor: item.color
+                        }}
+                      />
+
+                      {/* LAYER 2: WHITE CYLINDER BODY WALL (Curved 3D body with tall 3D depth) */}
+                      <div 
+                        className="absolute bottom-2 left-0 w-32 h-15 rounded-b-[50%] bg-gradient-to-b from-white via-stone-100 to-stone-200 border-x border-b border-stone-300/80"
+                      />
+
+                      {/* LAYER 3: TOP PEDESTAL DISC (3D Surface) */}
+                      <div 
+                        className="absolute top-0 left-0 z-20 w-32 h-11 rounded-[50%] bg-white border-2 border-stone-200/90 flex items-center justify-center transition-all duration-300 overflow-visible"
+                      >
+                        {/* Inner Glowing Ellipse Ring - SOLID BRAND BLUE RIM LINE */}
                         <div 
-                          className="absolute bottom-0 left-0 w-32 h-10 rounded-[50%] transition-all duration-300 shadow-sm"
+                          className="w-22 h-7.5 rounded-[50%] flex items-center justify-center transition-all duration-300 relative overflow-visible"
                           style={{
-                            backgroundColor: item.color
+                            backgroundColor: isActive ? 'rgba(1, 138, 222, 0.22)' : 'rgba(1, 138, 222, 0.10)',
+                            border: '2px solid #018ade'
                           }}
-                        />
-
-                        {/* LAYER 2: WHITE CYLINDER BODY WALL (Curved 3D body with tall 3D depth) */}
-                        <div 
-                          className="absolute bottom-2 left-0 w-32 h-15 rounded-b-[50%] bg-gradient-to-b from-white via-stone-100 to-stone-200 border-x border-b border-stone-300/80"
-                        />
-
-                        {/* LAYER 3: TOP PEDESTAL DISC (3D Surface) */}
-                        <div 
-                          className="absolute top-0 left-0 z-20 w-32 h-11 rounded-[50%] bg-white border-2 border-stone-200/90 flex items-center justify-center transition-all duration-300 overflow-visible"
                         >
-                          {/* Inner Glowing Ellipse Ring - SOLID BRAND BLUE RIM LINE */}
-                          <div 
-                            className="w-22 h-7.5 rounded-[50%] flex items-center justify-center transition-all duration-300 relative overflow-visible"
-                            style={{
-                              backgroundColor: isActive ? 'rgba(1, 138, 222, 0.22)' : 'rgba(1, 138, 222, 0.10)',
-                              border: '2px solid #018ade'
-                            }}
-                          >
-                            {/* LARGE POP-OUT ICON - ALWAYS CRISP BLACK */}
-                            <div className={`relative z-30 transition-all duration-300 transform ${
-                              isActive 
-                                ? '-translate-y-4 scale-115' 
-                                : '-translate-y-2.5 group-hover:-translate-y-4 group-hover:scale-110'
-                            }`}>
-                              <IconComponent 
-                                className="w-9 h-9 sm:w-10 sm:h-10 stroke-[1.5] text-[#0f172a]"
-                                style={{ 
-                                  color: '#0f172a'
-                                }}
-                              />
-                            </div>
+                          {/* LARGE POP-OUT ICON - ALWAYS CRISP BLACK */}
+                          <div className={`relative z-30 transition-all duration-300 transform ${
+                            isActive 
+                              ? '-translate-y-4 scale-115' 
+                              : '-translate-y-2.5 group-hover:-translate-y-4 group-hover:scale-110'
+                          }`}>
+                            <IconComponent 
+                              className="w-9 h-9 sm:w-10 sm:h-10 stroke-[1.5] text-[#0f172a]"
+                              style={{ 
+                                color: '#0f172a'
+                              }}
+                            />
                           </div>
                         </div>
-
                       </div>
+
                     </div>
 
                     {/* -------------------------------------------------------- */}
-                    {/* CLEAN FLOATING PILLAR TEXT (TITLES ONLY, NO NUMBERS)    */}
+                    {/* CLEAN FLOATING PILLAR TEXT (100% PERFECTLY CENTERED)     */}
                     {/* -------------------------------------------------------- */}
-                    <div 
-                      onClick={() => handleStepClick(index)}
-                      className={`absolute cursor-pointer select-none transition-all duration-300 flex items-center whitespace-nowrap ${
-                        isActive ? 'scale-110 z-40' : 'opacity-85 hover:opacity-100 hover:scale-105 z-20'
-                      }`}
-                      style={calloutStyle}
-                    >
-                      <span className={`font-semibold text-xs sm:text-sm lg:text-base uppercase tracking-wider transition-colors duration-200 ${
-                        isActive ? 'text-[#018ade]' : 'text-stone-900 hover:text-[#018ade]'
+                    <div className="mt-2 text-center flex items-center justify-center w-full">
+                      <span className={`font-semibold text-xs sm:text-sm lg:text-base uppercase tracking-wider text-center transition-colors duration-200 whitespace-nowrap ${
+                        isActive ? 'text-[#018ade]' : 'text-stone-900 group-hover:text-[#018ade]'
                       }`}>
                         {item.title}
                       </span>

@@ -15,6 +15,7 @@ import EmployeeStories from './components/EmployeeStories';
 import CompanyOverviewPage from './components/CompanyOverviewPage';
 import ProductPage from './components/ProductPage';
 import ProvenancePage from './components/ProvenancePage';
+import SourcingPage from './components/SourcingPage';
 import Footer from './components/Footer';
 import QuoteModal from './components/QuoteModal';
 
@@ -135,6 +136,16 @@ export default function App() {
       ) : currentPage === 'provenance-page' ? (
         <main className="flex-1">
           <ProvenancePage
+            onOpenQuoteModal={handleOpenQuoteModal}
+            onNavigatePage={(page) => {
+              setCurrentPage(page);
+              window.scrollTo({ top: 0, behavior: 'instant' });
+            }}
+          />
+        </main>
+      ) : currentPage === 'sourcing-page' ? (
+        <main className="flex-1">
+          <SourcingPage
             onOpenQuoteModal={handleOpenQuoteModal}
           />
         </main>
