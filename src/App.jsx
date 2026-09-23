@@ -13,9 +13,10 @@ import GlobalReach from './components/GlobalReach';
 import OurLocation from './components/OurLocation';
 import EmployeeStories from './components/EmployeeStories';
 import CompanyOverviewPage from './components/CompanyOverviewPage';
-import ProductPage from './components/ProductPage';
 import ProvenancePage from './components/ProvenancePage';
 import SourcingPage from './components/SourcingPage';
+import QualityPage from './components/QualityPage';
+import SafetyCompliancePage from './components/SafetyCompliancePage';
 import Footer from './components/Footer';
 import QuoteModal from './components/QuoteModal';
 
@@ -146,6 +147,18 @@ export default function App() {
       ) : currentPage === 'sourcing-page' ? (
         <main className="flex-1">
           <SourcingPage
+            onOpenQuoteModal={handleOpenQuoteModal}
+          />
+        </main>
+      ) : currentPage === 'quality-page' ? (
+        <main className="flex-1">
+          <QualityPage
+            onOpenQuoteModal={handleOpenQuoteModal}
+          />
+        </main>
+      ) : currentPage === 'safety-compliance-page' ? (
+        <main className="flex-1">
+          <SafetyCompliancePage
             onOpenQuoteModal={handleOpenQuoteModal}
           />
         </main>

@@ -123,6 +123,10 @@ export default function ProvenancePage({ onOpenQuoteModal, onNavigatePage }) {
     setIsAutoPlaying(false);
     if (pillars[index].id === 'sourcing' && onNavigatePage) {
       onNavigatePage('sourcing-page');
+    } else if (pillars[index].id === 'quality' && onNavigatePage) {
+      onNavigatePage('quality-page');
+    } else if (pillars[index].id === 'safety-compliance' && onNavigatePage) {
+      onNavigatePage('safety-compliance-page');
     }
   };
 
